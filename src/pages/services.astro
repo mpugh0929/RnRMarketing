@@ -1,0 +1,43 @@
+---
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import Articles from "@components/Articles.astro";
+
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import { getOptimizedImage } from "@libs/utils";
+import Landing from "@components/Landing.astro";
+
+// Import images
+import landingImage from "@assets/images/grey-abstract-m.webp";
+import landingDesktopImage from "@assets/images/grey-abstract.webp";
+import seoPic from "@assets/images/svg/seo-pic.svg";
+
+// Import SVG icons from @assets/images/svg directory
+import seoIcon from "@assets/images/svg/seo.svg";
+import piggyBankIcon from "@assets/images/svg/piggy-bank.svg";
+import FAQ from "@components/FAQ.astro";
+import CTA from "@components/CTA.astro";
+import ServicesDisplay from "@components/ServicesDisplay.astro";
+
+// Optimize the landing image
+const optimizedImage = await getOptimizedImage(landingImage);
+---
+
+<BaseLayout
+title="Restoration Marketing Services"
+description="Discover our comprehensive marketing solutions designed specifically for water damage, fire restoration, and mold remediation companies."
+preloadedImage={optimizedImage}
+>
+<Landing 
+    title="Restoration SEO"
+    image={optimizedImage}
+  />
+
+    <ServicesDisplay />
+
+    <FAQ />
+
+    <Articles />
+
+    <CTA />
+
+</BaseLayout>
