@@ -6,12 +6,16 @@ import Contact from "@components/Contact.astro";
 import CSPicture from "@components/TemplateComponents/CSPicture.astro";
 
 import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
+
 import { Icon } from 'astro-icon/components';
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
 import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import landingImageMobile from "@assets/images/hero-img-m.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import restorationGraphic from "@assets/images/results.jpg"
+import number1 from "@assets/images/number 1.jpeg"
 
 const optimizedImage = await getOptimizedImage(landingImage)
 const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
@@ -126,14 +130,13 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
         </ul> 
       </div>  
       <div class="cs-wrapper">
-          <picture class="cs-picture">
-              <!--Mobile Image-->
-              <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg">
-              <!--Tablet and above Image-->
-              <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg">
-              <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg" alt="meeting" width="630" height="414">
-          </picture>
-
+        <Image
+            src={number1}
+            alt="restoration workers meeting" 
+            width="630" 
+            height="414"
+            class="cs-picture"
+           />
           <p class="cs-review">
               <svg class="cs-quote" preserveAspectRatio="none" viewBox="0 0 100 93" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity=".4" clip-path="url(#a)" fill="var(--quoteColor)"><path d="M22.94 84H0L18.305.854H55L22.94 84ZM67.94 84H45L63.305.854H100L67.94 84Z"/></g><defs><clipPath id="a-1658"><path fill="#fff" transform="translate(0 .854)" d="M0 0h100v83.146H0z"/></clipPath></defs></svg>
 
@@ -155,13 +158,12 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
           <h2 class="cs-title">
             Get results as easily as 1-2-3.
           </h2>
-          <picture class="cs-picture">
-              <!--Mobile Image-->
-              <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg">
-              <!--Tablet and above Image-->
-              <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg">
-              <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg" alt="room" width="1280" height="603">
-          </picture>
+          <Image
+            src={restorationGraphic}
+            alt="room" 
+            width="1280" 
+            height="603"
+           />
       </div>
       <ul class="cs-card-group">
           <li class="cs-item">
