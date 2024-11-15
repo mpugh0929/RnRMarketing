@@ -3,6 +3,16 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import Landing from "@components/Landing.astro";
 import FAQ from "@components/FAQ.astro";
+import Articles from "@components/Articles.astro";
+
+// Import normal images
+import bannerImage from "@assets/images/banner.webp";
+import aboutImage from "@assets/images/about.webp";
+import aboutMobileImage from "@assets/images/about-m.webp";
+import about1Image from "@assets/images/about-1.webp";
+import about1MobileImage from "@assets/images/about-1-m.webp";
+import quoteIcon from "@assets/images/svg/quote-white.svg";
+import aboutBannerImage from "@assets/images/about-banner.webp";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
@@ -25,89 +35,47 @@ const optimizedImage = await getOptimizedImage(landingImage)
   />
 
   <!-- ============================================ -->
-  <!--                 Side By Side                 -->
-  <!-- ============================================ -->
+<!--                 Side By Side                 -->
+<!-- ============================================ -->
 
-  <section id="sbs">
-    <div class="cs-container">
+<section id="sbs-1014">
+  <div class="cs-container">
       <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
+      <div class="cs-image-group">
+          <picture class="cs-picture cs-picture1">
+              <source media="(max-width: 600px)" srcset={aboutMobileImage.src} />
+              <source media="(min-width: 601px)" srcset={aboutImage.src} />
+              <img loading="lazy" decoding="async" src={aboutImage.src} alt="Restoration Marketing Team" width="522" height="581" aria-hidden="true">
+          </picture>
+          <picture class="cs-picture cs-picture2">
+              <source media="(max-width: 600px)" srcset={about1MobileImage.src} />
+              <source media="(min-width: 601px)" srcset={about1Image.src} />
+              <img loading="lazy" decoding="async" src={about1Image.src} alt="Restoration Marketing Strategy" width="414" height="400" aria-hidden="true">
+          </picture>
       </div>
       <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <div class="cs-flex-group">
-          <p class="cs-flex-p">
-            In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
-            consequat tincidunt turpis sit amet imperdiet for mind.
+      <div class="cs-content">
+          <span class="cs-topper">About Us</span>
+          <h2 class="cs-title">Restoration Marketing Experts</h2>
+          <p class="cs-text">
+              We specialize in digital marketing solutions designed specifically for restoration and remediation companies. Our expertise helps you capture emergency calls, build insurance partnerships, and grow your restoration business.
           </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
-          <img
-            class="cs-quote-icon"
-            loading="lazy"
-            decoding="async"
-            src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-            alt="gavel"
-            width="136"
-            height="77"
-          />
-        </div>
-        <a href="/projects" class="cs-button-solid">Our Projects</a>
+          <p class="cs-text">
+              From emergency-focused PPC campaigns to long-term SEO strategies, we help restoration companies dominate their local markets. Our comprehensive approach includes everything from weather-triggered advertising to social media marketing to maximize your ROI.
+          </p>
+          <div class="cs-quote">
+              <span class="cs-quote-text">
+                  We understand that in restoration, every emergency call matters. Our marketing strategies ensure you're found first when property owners need immediate help.
+              </span>
+              <span class="cs-name">Matt Pugh</span>
+              <span class="cs-job">Restoration Marketing Specialist</span>
+              <img class="cs-quote-icon" loading="lazy" decoding="async" src={quoteIcon.src} alt="quote" width="70" height="35">
+          </div>
       </div>
-    </div>
-  </section>
+  </div>
+ </section>
+
+  <Articles />
   <FAQ />
   <CTA />
 </BaseLayout>
@@ -318,4 +286,157 @@ const optimizedImage = await getOptimizedImage(landingImage)
       }
     }
   }
+  /*-- -------------------------- -->
+<---       Side By Side         -->
+<--- -------------------------- -*/
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #sbs-1014 {
+      padding: var(--sectionPadding);
+      background-color: #f7f7f7;
+  }
+
+      #sbs-1014 .cs-container {
+          width: 100%;
+          max-width: 80rem;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* 48px - 64px */
+          gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      #sbs-1014 .cs-content {
+          /* set text align to left if content needs to be left aligned */
+          text-align: left;
+          width: 100%;
+          max-width: 33.875rem;
+          display: flex;
+          flex-direction: column;
+          /* centers content horizontally, set to flex-start to left align */
+          align-items: flex-start;
+      }
+
+      #sbs-1014 .cs-text {
+          font-size: var(--bodyFontSize);
+          line-height: 1.5em;
+          text-align: inherit;
+          width: 100%;
+          max-width: 40.625rem;
+          margin: 0;
+          color: var(--bodyTextColor);
+      }
+
+      #sbs-1014 .cs-text {
+          margin-bottom: 1rem;
+      }
+
+          #sbs-1014 .cs-text:last-of-type {
+              margin-bottom: 2rem;
+          }
+
+      #sbs-1014 .cs-quote {
+          margin: 0 0 2rem 0;
+          /* 16px - 32px */
+          padding: clamp(1rem, 3vw, 2rem);
+          background-color: #1a1a1a;
+          position: relative;
+      }
+
+      #sbs-1014 .cs-quote-text {
+          /* 14px - 16px */
+          font-size: clamp(0.875rem, 1.5vw, 1rem);
+          line-height: 1.5em;
+          margin: 0 0 1rem;
+          color: var(--bodyTextColorWhite);
+          display: block;
+      }
+
+      #sbs-1014 .cs-name {
+          font-size: 1rem;
+          line-height: 1.2em;
+          text-transform: uppercase;
+          font-weight: bold;
+          margin: 0 0 0.25rem;
+          color: var(--primary);
+          display: block;
+      }
+
+      #sbs-1014 .cs-job {
+          font-size: 0.875rem;
+          line-height: 1.5em;
+          color: var(--bodyTextColorWhite);
+          display: block;
+      }
+
+      #sbs-1014 .cs-quote-icon {
+          /* 60px - 136px */
+          width: clamp(3.75rem, 10vw, 7rem);
+          height: auto;
+          position: absolute;
+          bottom: 0rem;
+          /* 16px - 32px */
+          right: clamp(1rem, 4vw, 2rem);
+      }
+
+      #sbs-1014 .cs-image-group {
+          /* scaling the font size with the view width */
+          font-size: min(2.31vw, .7em);
+          /* using ems so we can use font size to scale the whole section */
+          width: 39.4375em;
+          height: 39.75em;
+          position: relative;
+      }
+
+      #sbs-1014 .cs-picture {
+          position: absolute;
+          display: block;
+      }
+
+          #sbs-1014 .cs-picture img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              /* makes image act like a background image */
+              object-fit: cover;
+          }
+
+      #sbs-1014 .cs-picture1 {
+          width: 32.625em;
+          height: 36.3125em;
+          left: 0;
+          top: 0;
+      }
+
+      #sbs-1014 .cs-picture2 {
+          width: 25.875em;
+          height: 25em;
+          background-color: #fff;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
+          /* 6px - 12px */
+          border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
+          right: 0;
+          bottom: 0;
+      }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #sbs-1014 .cs-container {
+      flex-flow: row;
+      justify-content: space-between;
+      gap: 3.25rem;
+  }
+
+  #sbs-1014 .cs-image-group {
+      font-size: min(1.2vw, 1em);
+      flex: none;
+  }
+
+  #sbs-1014 .cs-content {
+      margin: 0;
+  }
+}
 </style>

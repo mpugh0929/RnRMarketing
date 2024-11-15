@@ -3,17 +3,27 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import Contact from "@components/Contact.astro";
+import CSPicture from "@components/TemplateComponents/CSPicture.astro";
+
 import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
+
 import { Icon } from 'astro-icon/components';
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
 import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImageMobile from "@assets/images/hero-img-m-2.jpeg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import restorationGraphic from "@assets/images/results.jpg"
+import number1 from "@assets/images/number 1.jpeg"
+
 const optimizedImage = await getOptimizedImage(landingImage)
+const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
+
 ---
 
 <BaseLayout
-  title="Pixel Perfect Websites"
+  title="Home"
   description="Meta description for the page"
   preloadedImage = {optimizedImage}
 >
@@ -37,12 +47,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <div class="cs-bubbles cs-bubbles1" aria-hidden="true"></div>
     <div class="cs-bubbles cs-bubbles2" aria-hidden="true"></div>
     <!-- Background Image, background image added in the css at 1600px for parallax effect -->
-    <Picture class="cs-background"
-     src={landingImage} 
-     width="2250" 
-     height="1500" 
-     formats={['avif', 'webp']} 
-     alt="Two restoration workers happy with the results of their digital marketing."/>
+    <picture class="cs-background">
+      <source media="(max-width: 600px)" srcset={optimizedImageMobile.src}>
+      <source media="(min-width: 601px)" srcset={optimizedImage.src}>
+      <img decoding="async" src={optimizedImage.src} alt="web designer" width="2250" height="1500" aria-hidden="true">
+  </picture>
+  
 </section>
    
 <!-- ============================================ -->
@@ -101,14 +111,13 @@ const optimizedImage = await getOptimizedImage(landingImage)
         </ul> 
       </div>  
       <div class="cs-wrapper">
-          <picture class="cs-picture">
-              <!--Mobile Image-->
-              <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg">
-              <!--Tablet and above Image-->
-              <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg">
-              <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting12.jpg" alt="meeting" width="630" height="414">
-          </picture>
-
+        <Image
+            src={number1}
+            alt="restoration workers meeting" 
+            width="630" 
+            height="414"
+            class="cs-picture"
+           />
           <p class="cs-review">
               <svg class="cs-quote" preserveAspectRatio="none" viewBox="0 0 100 93" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity=".4" clip-path="url(#a)" fill="var(--quoteColor)"><path d="M22.94 84H0L18.305.854H55L22.94 84ZM67.94 84H45L63.305.854H100L67.94 84Z"/></g><defs><clipPath id="a-1658"><path fill="#fff" transform="translate(0 .854)" d="M0 0h100v83.146H0z"/></clipPath></defs></svg>
 
@@ -130,13 +139,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
           <h2 class="cs-title">
             Get results as easily as 1-2-3.
           </h2>
-          <picture class="cs-picture">
-              <!--Mobile Image-->
-              <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg">
-              <!--Tablet and above Image-->
-              <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg">
-              <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/room.jpg" alt="room" width="1280" height="603">
-          </picture>
+          <Image
+            src={restorationGraphic}
+            alt="room" 
+            width="1280" 
+            height="603"
+           />
       </div>
       <ul class="cs-card-group">
           <li class="cs-item">
@@ -173,7 +181,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <div class="cs-container">
         <div class="cs-content">
             <span class="cs-topper">TRUSTED BY LEADING RESTORATION COMPANIES</span>
-            <h2 class="cs-title">Why Choose Us?</h2>
+            <h2 class="cs-title">Our Strategy Works</h2>
             <p class="cs-text">
                 We've combined our proven SEO expertise with specialized restoration industry knowledge to create winning digital strategies. Our commitment to excellence and laser focus on restoration marketing ensures your marketing dollars generate maximum returns.
             </p>
@@ -566,7 +574,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 @media only screen and (min-width: 100rem) {
     #hero-1349 {
         .cs-background {
-            background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/on-computer.jpg");
+            background: url("../assets/images/hero-img.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
