@@ -32,6 +32,30 @@ preloadedImage={optimizedImage}
     image={optimizedImage}
   />
 
+  <!-- ============================================ -->
+    <!--                  Content                     -->
+    <!-- ============================================ -->
+
+    <section id="content-1637">
+        <div class="cs-container">
+            <div class="cs-content">
+                <div class="cs-flex">
+                    <span class="cs-topper">OUR APPROACH</span>
+                    <h2 class="cs-title">We Package Services That Drive Real Results for Restoration Companies</h2>
+                </div>
+                <div class="cs-flex">
+                    <h3 class="cs-h3">
+                        Stop wasting money on scattered marketing efforts. Our proven combination of services delivers qualified restoration leads.
+                    </h3>
+                    <p class="cs-text">
+                        Through years of SEO expertise and deep restoration industry knowledge, we've identified exactly what works to generate emergency calls and commercial contracts. Our core service package combines 24/7 PPC for immediate emergency leads, strategic SEO for long-term growth, and high-converting websites that turn visitors into customers. We enhance these foundations with targeted reputation management, social media presence, content marketing, and detailed analytics tracking to create a complete marketing ecosystem. Each component works together to attract property owners, build trust with insurance partners, and grow your restoration business. And since we only work with one restoration company per service area, your success is our sole focus in your market.
+                    </p>
+                    <a href="https://calendly.com/matt-remediationrestorationmarketing/30min" class="cs-button-solid">Schedule Your Strategy Call</a>
+                </div>
+            </div>  
+        </div>
+    </section>
+
     <ServicesDisplay />
 
     <FAQ />
@@ -41,3 +65,130 @@ preloadedImage={optimizedImage}
     <CTA />
 
 </BaseLayout>
+
+<style lang="less">
+/*-- -------------------------- -->
+<---          Content           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #content-1637 {
+        padding: var(--sectionPadding);
+        background-color: #111926;
+        position: relative;
+        z-index: 1;
+        
+        .cs-container {
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 100px */
+            gap: clamp(3rem, 9vw, 6.25rem);
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        .cs-flex {
+            max-width: (608/16rem);
+        }
+    
+        .cs-title {
+            color: var(--bodyTextColorWhite);
+        }
+
+        .cs-h3 {
+            font-size: (20/16rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            margin: 0 0 (16/16rem) 0;
+            color: var(--bodyTextColorWhite);
+        }
+
+        .cs-text {
+            margin-bottom: (16/16rem);
+            opacity: .8;
+            color: var(--bodyTextColorWhite);
+
+            &:last-of-type {
+                margin-bottom: (32/16rem);
+            }
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-decoration: none;
+	    	font-weight: 700;
+	        text-align: center;
+            margin: 0;
+            color: #fff;
+            min-width: (150/16rem);
+            padding: 0 (24/16rem);
+            background-color: var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width .3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #content-1637 {
+        &:before {
+            height: 63%;
+        }
+        .cs-content {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: (40/16rem);
+        }
+
+        .cs-flex {
+            width: 50%;
+            text-align: left;
+            max-width: (608/16rem);
+        }
+
+        .cs-title {
+            margin: 0;
+        }
+    }
+}
+                                
+</style>

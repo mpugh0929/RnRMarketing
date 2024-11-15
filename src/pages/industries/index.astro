@@ -2,13 +2,13 @@
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import Landing from "@components/Landing.astro";
 
-import locations from '@data/locationData.json';
+import Industries from '@data/industriesData.json';
 import Articles from "@components/Articles.astro";
 
-// Split locations data into two halves for layout
-const half = Math.ceil(locations.length / 2);
-const firstHalfLocations = locations.slice(0, half);
-const secondHalfLocations = locations.slice(half);
+// Split Industries data into two halves for layout
+const half = Math.ceil(Industries.length / 2);
+const firstHalfIndustries = Industries.slice(0, half);
+const secondHalfIndustries = Industries.slice(half);
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -16,7 +16,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
 <BaseLayout
-  title="Locations"
+  title="Industries"
   description="Explore TRW Contracting's service areas across Maryland, including Baltimore, Carroll County, and more. Discover top-tier construction and renovation services tailored to your community. Contact us today!"
   preloadedImage = {optimizedImage}
 >
@@ -34,35 +34,35 @@ const optimizedImage = await getOptimizedImage(landingImage)
   <section id="why-choose-1662">
     <div class="cs-container">
       <div class="cs-content">
-        <span class="cs-topper">Our Locations</span>
+        <span class="cs-topper">Our Industries</span>
         <h2 class="cs-title">Learn More About Our Services In These Areas</h2>
       </div>
       <div class="cs-wrapper">
         <ul class="cs-card-group">
-          {locations.slice(0, Math.ceil(locations.length / 2)).map((location, index) => (
-            <li class="cs-item" key={location.Name}>
+          {Industries.slice(0, Math.ceil(Industries.length / 2)).map((industry, index) => (
+            <li class="cs-item" key={industry.Name}>
               <span class="cs-item-number">{index + 1}</span>
               <div class="cs-item-wrapper">
                 <h3 class="cs-h3">
-                  <a href={`/locations/${location.Name}`} class="cs-link">{location.FormalName}</a>
+                  <a href={`/Industries/${industry.Name}`} class="cs-link">{industry.FormalName}</a>
                 </h3>
                 <p class="cs-item-text">
-                  {location.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
+                  {industry.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
             </li>
           ))}
         </ul>
         <ul class="cs-card-group">
-          {locations.slice(Math.ceil(locations.length / 2)).map((location, index) => (
-            <li class="cs-item" key={location.Name}>
-              <span class="cs-item-number">{index + Math.ceil(locations.length / 2) + 1}</span>
+          {Industries.slice(Math.ceil(Industries.length / 2)).map((industry, index) => (
+            <li class="cs-item" key={industry.Name}>
+              <span class="cs-item-number">{index + Math.ceil(Industries.length / 2) + 1}</span>
               <div class="cs-item-wrapper">
                 <h3 class="cs-h3">
-                  <a href={`/locations/${location.Name}`} class="cs-link">{location.FormalName}</a>
+                  <a href={`/Industries/${industry.Name}`} class="cs-link">{industry.FormalName}</a>
                 </h3>
                 <p class="cs-item-text">
-                  {location.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
+                  {industry.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
             </li>

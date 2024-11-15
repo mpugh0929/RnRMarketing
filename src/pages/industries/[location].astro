@@ -1,23 +1,23 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import locationData from '@data/locationData.json';
+import industriesData from '@data/industriesData.json';
 import services from '@data/serviceData.json';
 import Testimonial from "@components/Testimonial.astro";
 import Contact from "@components/Contact.astro";
 import Landing from "@components/Landing.astro";
 
 export async function getStaticPaths() {
-  // Generate paths for each location
-  return locationData.map(location => ({
-    params: { location: location.Name }, // `name` should match the identifier in your JSON
+  // Generate paths for each Industry
+  return industriesData.map(Industry => ({
+    params: { Industry: Industry.Name }, // `name` should match the identifier in your JSON
   }));
 }
 
-const { location } = Astro.params; // Get the service slug from the URL parameters
-const currentLocation = locationData.find(l => l.Name === location);
+const { Industry } = Astro.params; // Get the service slug from the URL parameters
+const currentIndustry = industriesData.find(l => l.Name === Industry);
 
-if (!currentLocation) {
-  throw new Error(`Location not found for: ${location}`);
+if (!currentIndustry) {
+  throw new Error(`Industry not found for: ${Industry}`);
 }
 // Split services data into two equal halves for layout purposes
 const half = Math.ceil(services.length / 2);
@@ -30,8 +30,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
 <BaseLayout
-  title={`Contractor in ${currentLocation.FormalName}`}
-  description={`TRW Contracting in ${currentLocation.FormalName}. Contact us today.`}
+  title={`Contractor in ${currentIndustry.FormalName}`}
+  description={`TRW Contracting in ${currentIndustry.FormalName}. Contact us today.`}
   preloadedImage={optimizedImage}
 >
 
@@ -47,16 +47,16 @@ const optimizedImage = await getOptimizedImage(landingImage)
   <section id="sbs-1278">
     <div class="cs-container">
       <picture class="cs-picture">
-        <source media="(max-width: 600px)" srcset={`/assets/images${currentLocation.ImagePath}`} />
-        <source media="(min-width: 601px)" srcset={`/assets/images${currentLocation.ImagePath}`} />
-        <img loading="lazy" decoding="async" src={`/assets/images${currentLocation.ImagePath}`} alt="construction" width="738" height="598" />
+        <source media="(max-width: 600px)" srcset={`/assets/images${currentIndustry.ImagePath}`} />
+        <source media="(min-width: 601px)" srcset={`/assets/images${currentIndustry.ImagePath}`} />
+        <img loading="lazy" decoding="async" src={`/assets/images${currentIndustry.ImagePath}`} alt="construction" width="738" height="598" />
       </picture>
       <div class="cs-content">
         <div class="cs-flex">
-          <span class="cs-topper">{currentLocation.FormalName}</span>
-          <h1 class="cs-title">Contractor in {currentLocation.FormalName}</h1>
+          <span class="cs-topper">{currentIndustry.FormalName}</span>
+          <h1 class="cs-title">Contractor in {currentIndustry.FormalName}</h1>
         </div>
-        <div set:html={currentLocation.Description}></div>
+        <div set:html={currentIndustry.Description}></div>
         <a href="/contact" class="cs-button-solid">Learn More</a>
       </div>
     </div>
@@ -87,7 +87,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
       <ul class="cs-card-group">
         {services.map(service => (
           <li class="cs-item" key={service.Name}>
-            <a href={`/${service.Name}/${currentLocation.Name}`} class="cs-link">
+            <a href={`/${service.Name}/${currentIndustry.Name}`} class="cs-link">
               <h3 class="cs-h3">{service.FormalName}</h3>
               <p class="cs-item-text">{service.ShortDescription}</p>
             </a>
