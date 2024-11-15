@@ -1,0 +1,1191 @@
+---
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import locationData from '@data/locationData.json';
+import services from '@data/serviceData.json';
+import Testimonial from "@components/Testimonial.astro";
+import Contact from "@components/Contact.astro";
+
+export async function getStaticPaths() {
+  // Generate paths for each location
+  return locationData.map(location => ({
+    params: { location: location.Name }, // `name` should match the identifier in your JSON
+  }));
+}
+
+const { location } = Astro.params; // Get the service slug from the URL parameters
+const currentLocation = locationData.find(l => l.Name === location);
+
+if (!currentLocation) {
+  throw new Error(`Location not found for: ${location}`);
+}
+// Split services data into two equal halves for layout purposes
+const half = Math.ceil(services.length / 2);
+const firstHalfServices = services.slice(0, half);
+const secondHalfServices = services.slice(half);
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+import {getOptimizedImage} from "@libs/utils"
+import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+const optimizedImage = await getOptimizedImage(landingImage)
+---
+
+<BaseLayout
+  title={`Contractor in ${currentLocation.FormalName}`}
+  description={`TRW Contracting in ${currentLocation.FormalName}. Contact us today.`}
+  preloadedImage={optimizedImage}
+>
+
+<!-- ============================================ -->
+<!--                   Banner                     -->
+<!-- ============================================ -->
+
+<div id="ContactBanner-327">
+    <div class="cs-container">
+      <span class="cs-int-title">{currentLocation.FormalName}</span>
+      <div class="cs-breadcrumbs">
+        <a href="/" class="cs-link">Home</a>
+        <a href="/locations" class="cs-link">Locations</a>
+        <a href="#" class="cs-link cs-active">{currentLocation.FormalName}</a>
+      </div>
+    </div>
+    <picture class="cs-background">
+      <source media="(max-width: 600px)" srcset="/assets/images/locations-m.webp" />
+      <source media="(min-width: 601px)" srcset="/assets/images/locations.webp" />
+      <img aria-hidden="true" fetchpriority="high" decoding="async" src="/assets/images/locations.webp" alt="farm" width="1920" height="375" />
+    </picture>
+  </div>
+  
+  <!-- ============================================ -->
+  <!--                 Side By Side                 -->
+  <!-- ============================================ -->
+  
+  <section id="sbs-1278">
+    <div class="cs-container">
+      <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset={`/assets/images${currentLocation.ImagePath}`} />
+        <source media="(min-width: 601px)" srcset={`/assets/images${currentLocation.ImagePath}`} />
+        <img loading="lazy" decoding="async" src={`/assets/images${currentLocation.ImagePath}`} alt="construction" width="738" height="598" />
+      </picture>
+      <div class="cs-content">
+        <div class="cs-flex">
+          <span class="cs-topper">{currentLocation.FormalName}</span>
+          <h1 class="cs-title">Contractor in {currentLocation.FormalName}</h1>
+        </div>
+        <div set:html={currentLocation.Description}></div>
+        <a href="/contact" class="cs-button-solid">Learn More</a>
+      </div>
+    </div>
+    <picture class="cs-background mb-5 mb-lg-0">
+      <source media="(max-width: 600px)" srcset="/assets/images/svg/white-waves-m.svg" />
+      <source media="(min-width: 601px)" srcset="/assets/images/svg/white-waves.svg" />
+      <img loading="lazy" decoding="async" src="/assets/images/svg/white-waves.svg" alt="waves" width="960" height="839" />
+    </picture>
+  </section>
+  
+  <Contact />
+  
+  <!-- ============================================ -->
+  <!--                    Services                  -->
+  <!-- ============================================ -->
+  
+  <section id="services-1254">
+    <div class="cs-container mb-3">
+      <div class="cs-content">
+        <div class="cs-flex-group">
+          <span class="cs-topper">Our Services</span>
+          <h3 class="cs-title">Learn About What We Do</h3>
+        </div>
+        <p class="cs-text">
+          From screwing in a light bulb to building a deck — we’re your 24/7 team for any and all construction and contracting projects in Maryland!
+        </p>
+      </div>
+      <ul class="cs-card-group">
+        {services.map(service => (
+          <li class="cs-item" key={service.Name}>
+            <a href={`/${service.Name}/${currentLocation.Name}`} class="cs-link">
+              <h3 class="cs-h3">{service.FormalName}</h3>
+              <p class="cs-item-text">{service.ShortDescription}</p>
+            </a>
+            <picture class="cs-item-background">
+              <source media="(max-width: 600px)" srcset={`/assets/images${service.ImagePath}-m.webp`} />
+              <source media="(min-width: 601px)" srcset={`/assets/images${service.ImagePath}.webp`} />
+              <img decoding="async" src={`/assets/images${service.ImagePath}.webp`} alt={service.FormalName} width="413" height="374" aria-hidden="true" />
+            </picture>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  
+  <Testimonial />
+
+</BaseLayout>
+<style lang="less">
+/*-- -------------------------- -->
+<---        Content Page        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    @keyframes floatAnimation {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-2rem);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes floatAnimation2 {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-3rem);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    #content-page-1533 {
+        padding: var(--sectionPadding);
+        background-color: #fff;
+        /* clips the wave background from causing overflow issues when it goes off screen */
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #content-page-1533 .cs-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 40px - 64px */
+            gap: clamp(2.5rem, 4vw, 4rem);
+            position: relative;
+        }
+
+        #content-page-1533 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            max-width: 46.125rem;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #content-page-1533 .cs-title {
+            font-size: var(--headerFontSize);
+            font-weight: 900;
+            line-height: 1.2em;
+            text-align: inherit;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+            position: relative;
+        }
+
+        #content-page-1533 h2,
+        #content-page-1533 h3,
+        #content-page-1533 h4,
+        #content-page-1533 h5,
+        #content-page-1533 h6 {
+            font-weight: 700;
+            text-align: inherit;
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #content-page-1533 h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+
+        #content-page-1533 h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        #content-page-1533 h4,
+        #content-page-1533 h5,
+        #content-page-1533 h6 {
+            font-size: 1.25rem;
+        }
+
+        #content-page-1533 .cs-button-solid {
+            margin-bottom: 2rem;
+        }
+
+        #content-page-1533 .cs-no-margin {
+            margin: 0;
+        }
+
+        #content-page-1533 .cs-color {
+            color: var(--primary);
+        }
+
+        #content-page-1533 p {
+            font-size: var(--bodyFontSize);
+            line-height: 1.5em;
+            text-align: inherit;
+            width: 100%;
+            margin: 0 0 1rem 0;
+            color: var(--bodyTextColor);
+        }
+
+            #content-page-1533 p:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+            #content-page-1533 p a {
+                font-size: inherit;
+                line-height: inherit;
+                text-decoration: underline;
+                color: var(--primary);
+                filter: brightness(120%);
+            }
+
+        #content-page-1533 ol,
+        #content-page-1533 ul {
+            padding-left: 1.5rem;
+            margin: 0 0 2rem 0;
+            color: var(--bodyTextColor);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+            #content-page-1533 ul li {
+                list-style: none;
+                color: inherit;
+                position: relative;
+            }
+
+                #content-page-1533 ul li:before {
+                    /* custom list bullet */
+                    content: '';
+                    width: 3px;
+                    height: 3px;
+                    background: currentColor;
+                    opacity: 1;
+                    border-radius: 50%;
+                    position: absolute;
+                    display: block;
+                    top: 0.625rem;
+                    left: -0.75rem;
+                }
+
+        #content-page-1533 img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #content-page-1533 .cs-image-group {
+            width: 32.625em;
+            height: 33.75em;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        #content-page-1533 .cs-background {
+            width: 100%;
+            height: 100%;
+            border-radius: 2.5em;
+            /* clips the corners of the children around the border radius */
+            overflow: hidden;
+            /* makes it cover the parent dimensions */
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+            #content-page-1533 .cs-background img {
+                width: 100%;
+                height: 100%;
+                /* makes it cover the parent like a backgorund image */
+                object-fit: cover;
+                display: block;
+            }
+
+        #content-page-1533 .cs-flower {
+            width: 9.5625em;
+            height: auto;
+            position: absolute;
+            right: -2em;
+            top: -2.25em;
+            z-index: 10;
+        }
+
+        #content-page-1533 .cs-floater {
+            width: 44.375em;
+            height: auto;
+            position: absolute;
+            left: 9.375em;
+            top: 25em;
+            z-index: -1;
+            animation-name: floatAnimation2;
+            animation-duration: 14s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+        }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #content-page-1533 .cs-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    #content-page-1533 .cs-content {
+        width: 60%;
+        max-width: 43.375rem;
+        /* prevents flexbox from squishing it */
+        flex: none;
+    }
+
+    #content-page-1533 .cs-image-group {
+        font-size: min(1.3vw, 1em);
+        display: block;
+        /* sends it to the right in the 2nd position */
+        order: 2;
+    }
+}
+/* Desktop - 1200px */
+@media only screen and (min-width: 75rem) {
+    #content-page-1533 .cs-content {
+        width: 53%;
+    }
+}
+
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #RTsbs-1281,
+    #RTsbsr-1281,
+    #RTsbst-1281 {
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #RTsbs-1281 .cs-container,
+        #RTsbsr-1281 .cs-container,
+        #RTsbst-1281 .cs-container {
+            width: 100%;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
+        }
+
+        #RTsbs-1281 .cs-content,
+        #RTsbsr-1281 .cs-content,
+        #RTsbst-1281 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #RTsbs-1281 .cs-title,
+        #RTsbsr-1281 .cs-title,
+        #RTsbst-1281 .cs-title {
+            max-width: 20ch;
+        }
+
+        #RTsbs-1281 .cs-text,
+        #RTsbsr-1281 .cs-text,
+        #RTsbst-1281 .cs-text {
+            margin-bottom: 1rem;
+        }
+
+            #RTsbs-1281 .cs-text:last-of-type,
+            #RTsbsr-1281 .cs-text:last-of-type,
+            #RTsbst-1281 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+        #RTsbs-1281 .cs-button-solid,
+        #RTsbsr-1281 .cs-button-solid,
+        #RTsbst-1281 .cs-button-solid {
+            font-size: 1rem;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+            transition: color 0.3s;
+        }
+
+            #RTsbs-1281 .cs-button-solid:before,
+            #RTsbsr-1281 .cs-button-solid:before,
+            #RTsbst-1281 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #RTsbs-1281 .cs-button-solid:hover,
+            #RTsbsr-1281 .cs-button-solid:hover,
+            #RTsbst-1281 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #RTsbs-1281 .cs-button-solid:hover:before,
+                #RTsbsr-1281 .cs-button-solid:hover:before,
+                #RTsbst-1281 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #RTsbs-1281 .cs-picture,
+        #RTsbsr-1281 .cs-picture,
+        #RTsbst-1281 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #RTsbs-1281 .cs-picture:before,
+            #RTsbsr-1281 .cs-picture:before,
+            #RTsbst-1281 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #RTsbs-1281 .cs-picture img,
+            #RTsbsr-1281 .cs-picture img,
+            #RTsbst-1281 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #RTsbs-1281 .cs-background,
+        #RTsbsr-1281 .cs-background,
+        #RTsbst-1281 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #RTsbs-1281 .cs-background img,
+            #RTsbsr-1281 .cs-background img,
+            #RTsbst-1281 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #RTsbs-1281 .cs-content,
+    #RTsbsr-1281 .cs-content,
+    #RTsbst-1281 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #RTsbs-1281 .cs-flex,
+    #RTsbsr-1281 .cs-flex,
+    #RTsbst-1281 .cs-flex {
+        width: 45%;
+    }
+
+    #RTsbs-1281 .cs-title,
+    #RTsbsr-1281 .cs-title,
+    #RTsbst-1281 .cs-title {
+        margin: 0;
+    }
+
+    #RTsbs-1281 .cs-text,
+    #RTsbsr-1281 .cs-text,
+    #RTsbst-1281 .cs-text {
+        width: 50%;
+    }
+
+    #RTsbs-1281 .cs-button-solid,
+    #RTsbsr-1281 .cs-button-solid,
+    #RTsbst-1281 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbs-1281,
+    #RTsbsr-1281,
+    #RTsbst-1281 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #RTsbs-1281 .cs-container,
+        #RTsbsr-1281 .cs-container,
+        #RTsbst-1281 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #RTsbs-1281 .cs-content,
+        #RTsbsr-1281 .cs-content,
+        #RTsbst-1281 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #RTsbs-1281 .cs-flex,
+        #RTsbsr-1281 .cs-flex,
+        #RTsbst-1281 .cs-flex {
+            width: 100%;
+        }
+
+        #RTsbs-1281 .cs-title,
+        #RTsbsr-1281 .cs-title,
+        #RTsbst-1281 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #RTsbs-1281 .cs-text,
+        #RTsbsr-1281 .cs-text,
+        #RTsbst-1281 .cs-text {
+            width: 100%;
+        }
+
+        #RTsbs-1281 .cs-picture,
+        #RTsbsr-1281 .cs-picture,
+        #RTsbst-1281 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #RTsbs-1281 .cs-background,
+        #RTsbsr-1281 .cs-background,
+        #RTsbst-1281 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            border-radius: 0 0 1rem 0;
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---   Side By Side Reverse     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbsr-1281 .cs-content {
+        order: -1;
+    }
+
+    #RTsbsr-1281 .cs-background {
+        margin: 0;
+        /* 172px - 336px */
+        margin-left: clamp(11.125rem, 30vw, 21rem);
+        border-radius: 1rem 0 0 1rem;
+        left: 50%;
+        right: auto;
+    }
+}
+
+/*-- -------------------------- -->
+<---   Side By Side Triplet     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbst-1281 .cs-background {
+        border-radius: 0 1rem 0 0;
+    }
+}
+
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #sbs-1278 {
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #sbs-1278 .cs-container {
+            width: 100%;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
+        }
+
+        #sbs-1278 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #sbs-1278 .cs-title {
+            max-width: 20ch;
+        }
+
+        #sbs-1278 .cs-text {
+            margin-bottom: 1rem;
+        }
+
+            #sbs-1278 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+        #sbs-1278 .cs-button-solid {
+            font-size: 1rem;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+            transition: color 0.3s;
+        }
+
+            #sbs-1278 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #sbs-1278 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #sbs-1278 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #sbs-1278 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #sbs-1278 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #sbs-1278 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #sbs-1278 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #sbs-1278 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #sbs-1278 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #sbs-1278 .cs-flex {
+        width: 45%;
+    }
+
+    #sbs-1278 .cs-title {
+        margin: 0;
+    }
+
+    #sbs-1278 .cs-text {
+        width: 50%;
+    }
+
+    #sbs-1278 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #sbs-1278 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #sbs-1278 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #sbs-1278 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #sbs-1278 .cs-flex {
+            width: 100%;
+        }
+
+        #sbs-1278 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #sbs-1278 .cs-text {
+            width: 100%;
+        }
+
+        #sbs-1278 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #sbs-1278 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #RPsbs-1280,
+    #RPsbsr-1280 {
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #RPsbs-1280 .cs-container,
+        #RPsbsr-1280 .cs-container {
+            width: 100%;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
+        }
+
+        #RPsbs-1280 .cs-content,
+        #RPsbsr-1280 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #RPsbs-1280 .cs-title,
+        #RPsbsr-1280 .cs-title {
+            max-width: 20ch;
+        }
+
+        #RPsbs-1280 .cs-text,
+        #RPsbsr-1280 .cs-text {
+            margin-bottom: 1rem;
+        }
+
+            #RPsbs-1280 .cs-text:last-of-type,
+            #RPsbsr-1280 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+        #RPsbs-1280 .cs-button-solid,
+        #RPsbsr-1280 .cs-button-solid {
+            font-size: 1rem;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+            transition: color 0.3s;
+        }
+
+            #RPsbs-1280 .cs-button-solid:before,
+            #RPsbsr-1280 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #RPsbs-1280 .cs-button-solid:hover,
+            #RPsbsr-1280 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #RPsbs-1280 .cs-button-solid:hover:before,
+                #RPsbsr-1280 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #RPsbs-1280 .cs-picture,
+        #RPsbsr-1280 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #RPsbs-1280 .cs-picture:before,
+            #RPsbsr-1280 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #RPsbs-1280 .cs-picture img,
+            #RPsbsr-1280 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #RPsbs-1280 .cs-background,
+        #RPsbsr-1280 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #RPsbs-1280 .cs-background img,
+            #RPsbsr-1280 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #RPsbs-1280 .cs-content,
+    #RPsbsr-1280 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #RPsbs-1280 .cs-flex,
+    #RPsbsr-1280 .cs-flex {
+        width: 45%;
+    }
+
+    #RPsbs-1280 .cs-title,
+    #RPsbsr-1280 .cs-title {
+        margin: 0;
+    }
+
+    #RPsbs-1280 .cs-text,
+    #RPsbsr-1280 .cs-text {
+        width: 50%;
+    }
+
+    #RPsbs-1280 .cs-button-solid,
+    #RPsbsr-1280 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RPsbs-1280,
+    #RPsbsr-1280 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #RPsbs-1280 .cs-container,
+        #RPsbsr-1280 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #RPsbs-1280 .cs-content,
+        #RPsbsr-1280 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #RPsbs-1280 .cs-flex,
+        #RPsbsr-1280 .cs-flex {
+            width: 100%;
+        }
+
+        #RPsbs-1280 .cs-title,
+        #RPsbsr-1280 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #RPsbs-1280 .cs-text,
+        #RPsbsr-1280 .cs-text {
+            width: 100%;
+        }
+
+        #RPsbs-1280 .cs-picture,
+        #RPsbsr-1280 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #RPsbs-1280 .cs-background,
+        #RPsbsr-1280 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            border-radius: 0 0 1rem 0;
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---   Side By Side Reverse     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RPsbsr-1280 .cs-content {
+        order: -1;
+    }
+
+    #RPsbsr-1280 .cs-background {
+        margin: 0;
+        /* 172px - 336px */
+        margin-left: clamp(11.125rem, 30vw, 21rem);
+        border-radius: 1rem 0 0 0;
+        left: 50%;
+        right: auto;
+    }
+}                                
+</style>

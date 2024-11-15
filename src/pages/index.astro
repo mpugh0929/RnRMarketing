@@ -2,10 +2,12 @@
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
+import Contact from "@components/Contact.astro";
+import { Picture } from 'astro:assets';
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
@@ -14,32 +16,34 @@ const optimizedImage = await getOptimizedImage(landingImage)
   description="Meta description for the page"
   preloadedImage = {optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                    Hero                      -->
-  <!-- ============================================ -->
 
-  <section id="hero-1350">
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-1349">
     <div class="cs-container">
         <div class="cs-content">
             <span class="cs-topper">Welcome To Remediation & Restoration Marketing</span>
             <h1 class="cs-title">Maximize Your Reach with Professional Remediation & Restoration Marketing Services</h1>
             <p class="cs-text">
-
-              Struggling to attract clients for your restoration services? Facing challenges in generating quality leads? Seeking a proven strategy for business growth? Reach out to us today.            </p>
-            <a href="" class="cs-button-solid">Free Consultation</a>
+              Struggling to attract clients for your restoration services? Facing challenges in generating quality leads? Seeking a proven strategy for business growth? Reach out to us today.            
+            </p>
+            <a href="" class="cs-button-solid">Claim Your Free Strategy Session →</a>
         </div>
     </div>
     <!--Bubble Groups-->
     <div class="cs-bubbles cs-bubbles1" aria-hidden="true"></div>
     <div class="cs-bubbles cs-bubbles2" aria-hidden="true"></div>
     <!-- Background Image, background image added in the css at 1600px for parallax effect -->
-    <picture class="cs-background">
-        <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/abstract-m.jpg">
-        <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/abstract.jpg">
-        <img decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/abstract.jpg" alt="abstract background" width="2250" height="1500" aria-hidden="true">
-    </picture>
-  </section>
-
+    <Picture class="cs-background"
+     src={landingImage} 
+     width="2250" 
+     height="1500" 
+     formats={['avif', 'webp']} 
+     alt="Two restoration workers happy with the results of their digital marketing."/>
+</section>
+   
 <!-- ============================================ -->
   <!--                  Services                    -->
   <!-- ============================================ -->
@@ -177,74 +181,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
   </div>
 </section>
 
-<!-- ============================================ -->
-<!--                   Contact                    -->
-<!-- ============================================ -->
-
-<section id="contact-1388">
-  <div class="cs-container">
-      <div class="cs-content">
-          <span class="cs-topper">Contact Us</span>
-          <h2 class="cs-title m-0">Get in Touch</h2>
-          <p class="cs-text">
-              We are a team of passionate and creative individuals dedicated to crafting captivating designs that leave a lasting impression.
-          </p>
-          <ul class="cs-ul">
-              <li class="cs-li">
-                  <picture class="cs-icon-wrapper">
-                      <img aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-76.svg" alt="phone icon" class="cs-icon" width="40" height="40" decoding="async">
-                  </picture>
-                  <div class="cs-flex-group">
-                      <span class="cs-header">Phone</span>
-                      <a href="tel:888-4565-789
-                      " class="cs-link">+1 (888) 4565 789
-                      </a>
-                  </div>
-              </li>
-              <li class="cs-li">
-                  <picture class="cs-icon-wrapper">
-                      <img aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/mail-76.svg" alt="address icon" class="cs-icon" width="40" height="40" decoding="async">
-                  </picture>
-                  <div class="cs-flex-group">
-                      <span class="cs-header">Email</span>
-                      <a href="mailto:Email@stitch.com" class="cs-link">Email@stitch.com</a>
-                  </div>
-              </li>
-              <li class="cs-li">
-                  <picture class="cs-icon-wrapper">
-                      <img aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/pin-76.svg" alt="address icon" class="cs-icon" width="40" height="40" decoding="async">
-                  </picture>
-                  <div class="cs-flex-group">
-                      <span class="cs-header">Address</span>
-                      <a href="" class="cs-link">2553 Woodbridge Lane, Boston Ware 120</a>
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <!--Form-->
-      <form class="cs-form" id="cs-form-1388" name="Contact Form" method="post">
-          <h3 class="cs-h3">Make Appointment</h3>
-          <label class="cs-label">
-              Name
-              <input class="cs-input" required type="text" id="name-1388" name="name" placeholder="Name">
-          </label>
-          <label class="cs-label cs-email">
-              Email
-              <input class="cs-input" required type="email" id="email-1388" name="email" placeholder="Email">
-          </label>
-          <label class="cs-label cs-phone">
-              Phone
-              <input class="cs-input" required type="number" id="phone-1388" name="phone" placeholder="Phone">
-          </label>
-          <label class="cs-label">
-              Message
-              <textarea class="cs-input cs-textarea" required name="Message" id="message-1388" placeholder="Write message..."></textarea>
-          </label>
-          <button class="cs-button-solid cs-submit" type="submit">Send Message</button>
-      </form>
-  </div>
-</section>
-                              
+<Contact />
+            
     
   <!-- ============================================ -->
   <!--                 Why Choose                   -->
@@ -291,14 +229,13 @@ const optimizedImage = await getOptimizedImage(landingImage)
     </div>
   </section>
                               
-  <FAQ /> 
-  
+  <FAQ />  
 
   <CTA />
 </BaseLayout>
 
 <style lang="less">
-  /*-- -------------------------- -->
+ /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
 
@@ -328,9 +265,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
         }
     }
 
-    #hero-1350 {
+    #hero-1349 {
         /* 250px - 500px - leaving extra space for the navigation */
-        padding: clamp(15.625rem, 35.95vw, 18rem) (16/16rem) 0;
+        padding: clamp(12rem, 35.95vw, 15rem) (16/16rem) 0;
         /* 200px - 250px */
         padding-bottom: clamp(12.5rem, 16.5vw, 15.625rem);
         box-sizing: border-box;
@@ -577,6 +514,22 @@ const optimizedImage = await getOptimizedImage(landingImage)
             left: 0;
             z-index: -2;
 
+            &:before {
+                /* Overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: 0.4;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                /* prevents the cursor from interacting with it */
+                pointer-events: none;
+            }
+
             img {
                 position: absolute;
                 top: 0;
@@ -593,7 +546,16 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #hero-1350 {
+    #hero-1349 {
+        .cs-container {
+            align-items: flex-start;
+        }
+
+        .cs-content {
+            text-align: left;
+            align-items: flex-start;
+        }
+
         .cs-bubbles {
             font-size: 1em;
         }
@@ -607,7 +569,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 /* Large Desktop - 1300px */
 @media only screen and (min-width: 81.25rem) {
-    #hero-1350 {
+    #hero-1349 {
         .cs-bubbles1 {
             /* 200px - 450px */
             margin-left: clamp(12.5rem, 20vw, 28.125rem);
@@ -620,9 +582,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 /* Large Desktop Parallax Effect - 1600px */
 @media only screen and (min-width: 100rem) {
-    #hero-1350 {
+    #hero-1349 {
         .cs-background {
-            background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/abstract.jpg");
+            background: url("https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/on-computer.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -636,7 +598,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 /* Larger Desktop - 1800px */
 @media only screen and (min-width: 112.5rem) {
-    #hero-1350 {
+    #hero-1349 {
         .cs-bubbles2 {
             margin-right: (800/16rem);
             right: 50%;
@@ -646,6 +608,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
         }
     }
 }
+
+                                
 
 
   /*-- -------------------------- -->
@@ -1296,280 +1260,6 @@ const optimizedImage = await getOptimizedImage(landingImage)
             /* pushes up against the container so there's always that gap between the top of the review and the container */
             margin-top: clamp(6.25rem, 20vw, 14.5rem);
             align-self: flex-end;
-        }
-    }
-}
-/*-- -------------------------- -->
-<---          Contact           -->
-<--- -------------------------- -*/
-
-/* Mobile - 360px */
-@media only screen and (min-width: 0rem) {
-    #contact-1388 {
-        padding: var(--sectionPadding);
-        background-color: #f7f7f7;
-        position: relative;
-        z-index: 1;
-
-        .cs-container {
-            width: 100%;
-            /* changes to 1280px at tablet */
-            max-width: (584/16rem);
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            flex-direction: column;
-            column-gap: auto;
-            /* 48px - 64px */
-            gap: clamp(2rem, 3vw, 3rem);
-            position: relative;
-        }
-
-        .cs-content {
-            /* set text align to left if content needs to be left aligned */
-            text-align: left;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
-            align-items: flex-start;
-        }
-
-        .cs-title {
-            max-width: 23ch;
-        }
-
-        .cs-text {
-            margin-bottom: (16/16rem);
-            &:last-of-type {
-                margin-bottom: (32/16rem);
-            }
-        }
-
-        .cs-ul {
-            text-align: left;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: (24/16rem);
-            position: relative;
-        }
-
-        .cs-li {
-            list-style: none;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            gap: (20/16rem);
-
-            &:hover {
-                .cs-icon-wrapper {
-                    transform: scale(1.1);
-                }
-            }
-        }
-
-        .cs-header {
-            font-size: (20/16rem);
-            font-weight: 700;
-            line-height: 1.2em;
-            margin-bottom: (12/16rem);
-            color: var(--headerColor);
-            display: block;
-        }
-
-        .cs-link {
-            font-size: (16/16rem);
-            line-height: 1.5em;
-            text-decoration: none;
-            color: #767676;
-            display: block;
-            position: relative;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        .cs-icon-wrapper {
-            width: (60/16rem);
-            height: (60/16rem);
-            margin: 0;
-            border-radius: 50%;
-            border: 1px solid #bababa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* prevents flexbox from squishing it */
-            flex: none;
-            transition: transform 0.3s;
-        }
-
-        .cs-icon {
-            width: (24/16rem);
-            height: auto;
-            display: block;
-        }
-
-        .cs-form {
-            width: 100%;
-            max-width: (630/16rem);
-            /* 24px - 48px top and bottom */
-            /* 16px - 48px left and right */
-            padding: clamp(1.5rem, 5.18vw, 3rem) clamp(1rem, 4vw, 3rem);
-            /* prevents flexbox from affecting height and width */
-            box-sizing: border-box;
-            background-color: #fff;
-            border-radius: (16/16rem);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: (12/16rem);
-        }
-
-        .cs-h3 {
-            /* 20px - 39px */
-            font-size: clamp(1.25rem, 3vw, 2.4375rem);
-            line-height: 1.2em;
-            font-weight: 700;
-            margin: 0 0 (4/16rem) 0;
-            color: var(--headerColor);
-        }
-
-        .cs-label {
-            /* 14px - 16px */
-            font-size: clamp(0.875rem, 1.5vw, 1rem);
-            width: 100%;
-            color: var(--headerColor);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            gap: (4/16rem);
-        }
-
-        .cs-input {
-            font-size: (16/16rem);
-            width: 100%;
-            height: (56/16rem);
-            padding: 0;
-            padding-left: (24/16rem);
-            color: var(--headerColor);
-            background-color: #f7f7f7;
-            border-radius: (8/16rem);
-            border: none;
-            /* prevents padding from adding to height and width */
-            box-sizing: border-box;
-            &::placeholder {
-                color: #7d799c;
-                opacity: 0.6;
-            }
-        }
-
-        .cs-textarea {
-            min-height: (120/16rem);
-            padding-top: (24/16rem);
-            margin-bottom: (12/16rem);
-            font-family: inherit;
-        }
-
-        .cs-button-solid {
-            font-size: (16/16rem);
-            line-height: (56/16rem);
-            text-decoration: none;
-            font-weight: 700;
-            overflow: hidden;
-            margin: 0;
-            color: #fff;
-            padding: 0 (48/16rem);
-            border-radius: (30/16rem);
-            background-color: var(--primary);
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s;
-
-            &:before {
-                content: "";
-                position: absolute;
-                display: block;
-                height: 100%;
-                width: 0%;
-                background: #1a1a1a;
-                opacity: 1;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                transition: width 0.3s;
-            }
-
-            &:hover {
-                color: var(--primary);
-                &:before {
-                    width: 100%;
-                }
-            }
-        }
-
-        .cs-submit {
-            width: 100%;
-            min-width: (200/16rem);
-            border: none;
-
-            &:hover {
-                color: #fff;
-                cursor: pointer;
-            }
-        }
-    }
-}
-
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-    #contact-1388 {
-        .cs-container {
-            max-width: (1280/16rem);
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .cs-content {
-            width: 47%;
-            /* prevents flexbox from squishing it */
-            flex: none;
-        }
-
-        .cs-submit {
-            width: auto;
-        }
-    }
-}
-
-/* Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-    #contact-1388 {
-        .cs-form {
-            width: 46%;
-            max-width: (578/16rem);
-        }
-
-        .cs-submit {
-            width: auto;
-        }
-    }
-}
-
-/* Large Desktop - 1500px */
-@media only screen and (min-width: 93.75rem) {
-    #contact-1388 {
-        .cs-graphic {
-            display: block;
         }
     }
 }
