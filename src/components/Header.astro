@@ -2,6 +2,9 @@
 import navData from "@data/navData.json";
 import { Icon } from 'astro-icon/components';
 import DarkModeToggle from "@components/DarkModeToggle.astro";
+import logo from "@assets/images/svg/rr-marketing-logo.svg"
+import { Image } from 'astro:assets';
+
 ---
 <!-- ============================================ -->
 <!--                 Navigation                   -->
@@ -35,8 +38,14 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
   </div>
   <div class="cs-container">
       <!--Nav Logo-->
-      <a href="" class="cs-logo" aria-label="back to home">
-          <img src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Logos/consulting-logo.svg" alt="logo" width="197" height="43" aria-hidden="true" decoding="async">
+      <a href="/" class="cs-logo" aria-label="back to home">
+        <Image
+            src={logo}
+            alt="logo" 
+            width="197" 
+            height="43" 
+            aria-hidden="true"
+           />
       </a>
       <!--Navigation List-->
       <nav class="cs-nav" role="navigation">
