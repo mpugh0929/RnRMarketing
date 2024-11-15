@@ -2,8 +2,10 @@
 // Import the component and all the images you want to use with it
 import CSPicture from "@components/TemplateComponents/CSPicture.astro";
 import mobileImage from "@assets/images/CTA/construction-m.jpg"
-import desktopImage from "@assets/images/CTA/cabinets2.jpg"
+import desktopImage from "@assets/images/CTA/flooded-basement.jpg"
 import fallbackImage from "@assets/images/CTA/cabinets2.jpg"
+import { Picture } from 'astro:assets';
+
 ---
 
 <!-- ============================================ -->
@@ -11,23 +13,25 @@ import fallbackImage from "@assets/images/CTA/cabinets2.jpg"
 <!-- ============================================ -->
 
 <section id="cta-52">
-  <div class="cs-container">
-      <div class="cs-content">
-          <span class="cs-topper">Contact Us</span>
-          <h2 class="cs-title">Get It Done With Us Today</h2>
-          <p class="cs-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis at sit pellentesque molestie.  Diam, adipiscing ultrices eu turpis gravida.
-          </p>
-          <a href="" class="cs-button-solid">Gret A Free Quote</a>
-      </div>
-      <!-- Background Image-->
-      <picture class="cs-picture">
-          <source media="(max-width: 600px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cabinets-m.jpg">
-          <source media="(min-width: 601px)" srcset="https://csimg.nyc3.digitaloceanspaces.com/CTA/cabinets.jpg">
-          <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/CTA/cabinets.jpg" alt="cabinets" width="1920" height="1280" aria-hidden="true">
-      </picture>
-  </div>
-</section>
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">LIMITED AVAILABILITY</span>
+            <h2 class="cs-title">Book Your Free Restoration Marketing Strategy Session</h2>
+            <p class="cs-text">
+                Get a customized growth plan for your restoration business. We'll analyze your market, identify untapped opportunities, and show you exactly how to outperform your competition. Remember - we only work with one restoration company per service area.
+            </p>
+            <a href="" class="cs-button-solid">Schedule Your Strategy Call Now</a>
+            <p class="text-white mt-2">*15-Minute Session | Zero Obligation | Custom Growth Plan Included</p>
+        </div>
+        <Picture class="cs-picture"
+            src={desktopImage} 
+            width="2250" 
+            height="1500" 
+            formats={['avif', 'webp']} 
+            alt="My super image in multiple formats!"/>
+        
+    </div>
+  </section>
                               
 
 <style lang="less">
