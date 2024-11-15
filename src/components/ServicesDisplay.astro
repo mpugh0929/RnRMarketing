@@ -1,0 +1,37 @@
+---
+import services from '@data/serviceData.json';
+---
+
+<!-- ============================================ -->
+<!--                    Services                  -->
+<!-- ============================================ -->
+<section id="services-1254">
+    <div class="cs-container mb-3">
+        <div class="cs-content">
+            <div class="cs-flex-group">
+                <span class="cs-topper">Our Services</span>
+                <h2 class="cs-title">Learn About What We Do</h2>
+            </div>
+            <p class="cs-text">
+                From screwing in a light bulb to building a deck — we’re your 24/7 team for any and all construction and contracting projects in Maryland!
+            </p>
+        </div>
+        <ul class="cs-card-group">
+            {services.map(service => (
+                <li class="cs-item" key={service.Name}>
+                    <a href={`/services/${service.Name}`} class="cs-link">
+                        <h3 class="cs-h3">{service.FormalName}</h3>
+                        <p class="cs-item-text">
+                            {service.ShortDescription}
+                        </p>
+                    </a>
+                    <picture class="cs-item-background">
+                        <source media="(max-width: 600px)" srcSet={`/assets/images${service.ImagePath}-m.webp`} />
+                        <source media="(min-width: 601px)" srcSet={`/assets/images${service.ImagePath}.webp`} />
+                        <img decoding="async" loading="lazy" src={`/assets/images${service.ImagePath}.webp`} alt={service.FormalName} width="413" height="374" aria-hidden="true" />
+                    </picture>
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>

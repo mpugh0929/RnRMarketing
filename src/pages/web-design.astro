@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import Articles from "@components/Articles.astro";
+import Landing from "@components/Landing.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import { getOptimizedImage } from "@libs/utils";
@@ -23,34 +24,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
   description="See how custom web design can help your company stand out from your competition."
   preloadedImage={optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                   Banner                     -->
-  <!-- ============================================ -->
-
-  <div id="banner-843">
-    <div class="cs-container">
-      <span class="cs-int-title">Web Design</span>
-    </div>
-    <!-- Background Image -->
-    <picture class="cs-background" aria-hidden="true">
-      <!-- Mobile Image -->
-      <source media="(max-width: 600px)" srcset={optimizedImage.src}>
-      <!-- Tablet and above Image -->
-      <source media="(min-width: 601px)" srcset={greyAbstractDesktop.src}>
-      <img
-        loading="lazy"
-        decoding="async"
-        src={greyAbstractDesktop.src}
-        alt="grey abstract"
-        width="1280"
-        height="568"
-      >
-    </picture>
-    <svg class="cs-wave" width="1920" height="179" viewBox="0 0 1920 179" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 179V91.3463C1835.33 91.3463 1715.47 76.615 1549.2 32.9521C1299.48 -32.3214 1132.77 12.1006 947.32 61.5167C810.762 97.9044 664.042 137 466.533 137C331.607 137 256.468 123.447 188.082 111.113C130.974 100.812 78.5746 91.3609 0 91.3609V179H1920Z" fill="white" />
-    </svg>
-  </div>
-
+<Landing 
+    title="Web Design"
+    image={optimizedImage}
+  />
   <!-- ============================================ -->
   <!--                 Content Page                 -->
   <!-- ============================================ -->

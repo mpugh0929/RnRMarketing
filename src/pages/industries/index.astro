@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
+import Landing from "@components/Landing.astro";
 
 import locations from '@data/locationData.json';
 import Articles from "@components/Articles.astro";
@@ -21,32 +22,10 @@ const optimizedImage = await getOptimizedImage(landingImage)
 >
 
 
-<!-- ============================================ -->
-<!--                   Banner                     -->
-<!-- ============================================ -->
-
-<div id="ContactBanner-327">
-    <div class="cs-container">
-      <h1 class="cs-int-title">Locations</h1>
-      <div class="cs-breadcrumbs">
-        <a href="/" class="cs-link">Home</a>
-        <a href="#" class="cs-link cs-active">Locations</a>
-      </div>
-    </div>
-    <picture class="cs-background">
-      <source media="(max-width: 600px)" srcset="/assets/images/locations-m.webp" />
-      <source media="(min-width: 601px)" srcset="/assets/images/locations.webp" />
-      <img
-        aria-hidden="true"
-        fetchpriority="high"
-        decoding="async"
-        src="/assets/images/locations.webp"
-        alt="farm"
-        width="1920"
-        height="375"
-      />
-    </picture>
-  </div>
+<Landing 
+    title="Paid Digital Advertising"
+    image={optimizedImage}
+  />
   
   <!-- ============================================ -->
   <!--                 Why Choose Us                -->

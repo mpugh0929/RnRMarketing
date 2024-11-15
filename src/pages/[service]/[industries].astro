@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import services from '@data/serviceData.json';
-import locations from '@data/locationData.json';
+import locations from '@data/industryData.json';
 import Articles from "@components/Articles.astro";
 import Contact from "@components/Contact.astro";
 
@@ -37,31 +37,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
   description={`Discover the best ${selectedService.FormalName} services in ${selectedLocation.FormalName} with TRW Construction. Make your dreams reality!`}
   preloadedImage={optimizedImage}
 >
-  <!-- ============================================ -->
-  <!--                   Banner                     -->
-  <!-- ============================================ -->
-  <div id="ContactBanner-327">
-    <div class="cs-container">
-      <h1 class="cs-int-title">{`${selectedService.FormalName} in ${selectedLocation.FormalName}`}</h1>
-      <div class="cs-breadcrumbs">
-        <a href="/" class="cs-link">Home</a>
-        <a href="#" class="cs-link cs-active">{`${selectedService.FormalName} in ${selectedLocation.FormalName}`}</a>
-      </div>
-    </div>
-    <picture class="cs-background">
-      <source media="(max-width: 600px)" srcset="/assets/images/services-m.webp" />
-      <source media="(min-width: 601px)" srcset="/assets/images/services.webp" />
-      <img
-        aria-hidden="true"
-        fetchpriority="high"
-        decoding="async"
-        src="/assets/images/services.webp"
-        alt="services"
-        width="1920"
-        height="375"
-      />
-    </picture>
-  </div>
+<Landing 
+title="Paid Digital Advertising"
+image={optimizedImage}
+/>
 
   <!-- ============================================ -->
   <!--                 Side By Side                 -->

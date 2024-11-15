@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import Articles from "@components/Articles.astro";
+import Landing from "@components/Landing.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
@@ -8,12 +9,7 @@ import landingImage from "@assets/images/grey-abstract-m.webp" // <-- THE PATH T
 const optimizedImage = await getOptimizedImage(landingImage)
 
 // Import images
-import landingDesktopImage from "@assets/images/grey-abstract.webp";
 import ppcIllustration from "@assets/images/svg/ppc.svg";
-
-// Import SVG icons from icons directory
-import trustIcon from "@assets/images/svg/trust.svg";
-import evaluationIcon from "@assets/images/svg/evaluation.svg";
 ---
 
 <BaseLayout
@@ -21,28 +17,11 @@ import evaluationIcon from "@assets/images/svg/evaluation.svg";
   description="Discover how Pugh Digital Ads can help you reach your digital advertising goals with PPC advertising and LSA campaigns."
   preloadedImage = {optimizedImage}
 >
-<!-- ============================================ -->
-<!--                   Banner                     -->
-<!-- ============================================ -->
 
-<div id="banner-843">
-    <div class="cs-container">
-        <span class="cs-int-title">Paid Digital Advertising</span>
-    </div>
-    <!--Background Image-->
-    <picture class="cs-background" aria-hidden="true">
-        <!--Mobile Image-->
-        <source media="(max-width: 600px)" srcset={optimizedImage.src}>
-        <!--Tablet and above Image-->
-        <source media="(min-width: 601px)" srcset={landingDesktopImage.src}>
-        <img loading="lazy" decoding="async" src={landingDesktopImage.src} alt="grey abstract" width="1280" height="568">
-    </picture>
-    <!--Change the svg path fill color to whatever color the section below is so you can match it and create the illusion it is all one piece-->
-    <svg class="cs-wave" width="1920" height="179" viewBox="0 0 1920 179" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 179V91.3463C1835.33 91.3463 1715.47 76.615 1549.2 32.9521C1299.48 -32.3214 1132.77 12.1006 947.32 61.5167C810.762 97.9044 664.042 137 466.533 137C331.607 137 256.468 123.447 188.082 111.113C130.974 100.812 78.5746 91.3609 0 91.3609V179H1920Z" fill="white" />
-    </svg>
-</div>
-
+<Landing 
+    title="Paid Digital Advertising"
+    image={optimizedImage}
+  />
 
 <!-- ============================================ -->
 <!--                 Content Page                 -->

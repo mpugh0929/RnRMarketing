@@ -1,13 +1,11 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import services from '@data/serviceData.json';
 import Articles from "@components/Articles.astro";
-import Testimonials from "@components/Testimonials.astro";
+import Testimonial from "@components/Testimonial.astro";
+import ServicesDisplay from "@components/ServicesDisplay.astro";
+import Contact from "@components/Contact.astro";
+import Landing from "@components/Landing.astro";
 
-// Split services data into two equal halves for layout purposes
-const half = Math.ceil(services.length / 2);
-const firstHalfServices = services.slice(0, half);
-const secondHalfServices = services.slice(half);
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -16,87 +14,25 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 <BaseLayout
   title="Services"
-  description="Explore Kayla Pugh Health Insurance & Medicare for personalized private health insurance, life insurance, supplemental insurance, and Medicare plans. Contact us for affordable, tailored coverage.";
+  description="Explore the range of services TRW Contracting offers, from custom home renovations to expert roofing and carpentry. Let us help you enhance your property with quality craftsmanship.";
   preloadedImage = {optimizedImage}
 >
 
-<!-- ============================================ -->
-<!--                   Banner                     -->
-<!-- ============================================ -->
+<Landing 
+    title="Paid Digital Advertising"
+    image={optimizedImage}
+  />
 
-<div id="ContactBanner-327">
-    <div class="cs-container">
-        <span class="cs-int-title">Services</span>
-        <div class="cs-breadcrumbs">
-            <a href="/" class="cs-link">Home</a>
-            <a href="#" class="cs-link cs-active">Services</a>
-        </div>
-    </div>
-    <!-- Background Image -->
-    <picture class="cs-background">
-        <source media="(max-width: 600px)" srcset="/assets/images/services-m.webp">
-        <source media="(min-width: 601px)" srcset="/assets/images/services.webp">
-        <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/services.webp" alt="Services" width="1920" height="375">
-    </picture>
-</div>
 
-<!-- ============================================ -->
-<!--                 Why Choose Us                -->
-<!-- ============================================ -->
+<ServicesDisplay />
 
-<section id="why-choose-1662">
-    <div class="cs-container">
-        <div class="cs-content">
-            <span class="cs-topper">Our Services</span>
-            <h2 class="cs-title">Learn More About Our Insurance Services</h2>
-        </div>
-        <div class="cs-wrapper">
-            <!-- First Half of Services -->
-            <ul class="cs-card-group">
-                {firstHalfServices.map((service, index) => (
-                    <li class="cs-item" key={service.Name}>
-                        <span class="cs-item-number">{index + 1}</span>
-                        <div class="cs-item-wrapper">
-                            <h3 class="cs-h3">
-                                <a class="cs-link" href={`/services/${service.Name}`}>
-                                    {service.FormalName}
-                                </a>
-                            </h3>
-                            <p class="cs-item-text">
-                                {service.Description.slice(0, 100)}...
-                            </p>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-            <!-- Second Half of Services -->
-            <ul class="cs-card-group">
-                {secondHalfServices.map((service, index) => (
-                    <li class="cs-item">
-                        <span class="cs-item-number">{half + index + 1}</span>
-                        <div class="cs-item-wrapper">
-                            <h3 class="cs-h3">
-                                <a class="cs-link" href={`/services/${service.Name}`}>
-                                    {service.FormalName}
-                                </a>
-                            </h3>
-                            <p class="cs-item-text">
-                                {service.Description.slice(0, 100)}...
-                            </p>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
-        <!-- SVG Graphic -->
-        <img class="cs-floater" src="/assets/images/svg/sesame.svg" alt="seeds" loading="lazy" decoding="async" height="710" aria-hidden="true" width="690">
-    </div>
-</section>
+<Contact />
 
+<Testimonial />
 
 <Articles />
 
-<Testimonials /></BaseLayout>
+</BaseLayout>
 <style lang="less">
     /*-- -------------------------- -->
 <---        Content Page        -->

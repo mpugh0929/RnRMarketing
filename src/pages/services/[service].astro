@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
+import Articles from "@components/Articles.astro";
 import services from '@data/serviceData.json';
+import Contact from "@components/Contact.astro";
 
 export async function getStaticPaths() {
   // Generate paths for each service
@@ -22,8 +24,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
 <BaseLayout
-  title={`${currentService.FormalName} Westminster MD`}
-  description={`Discover the best ${currentService.FormalName} services with Kayla Pugh Health Insurance & Medicare. Personalized plans tailored to your needs.`}
+  title={`${currentService.FormalName}`}
+  description={`${currentService.SeoDescription}`}
   preloadedImage={optimizedImage}
 >
 
@@ -31,55 +33,76 @@ const optimizedImage = await getOptimizedImage(landingImage)
 <!--                   Banner                     -->
 <!-- ============================================ -->
 
-<div id="ContactBanner-327">
+<div id="banner-712">
     <div class="cs-container">
-        <span class="cs-int-title">{currentService.FormalName}</span>
-        <div class="cs-breadcrumbs">
-            <a href="/" class="cs-link">Home</a>
-            <a href="/services" class="cs-link cs-active">Services</a>
-            <a href="#" class="cs-link cs-active">{currentService.FormalName}</a>
-        </div>
+      <h1 class="cs-int-title">{currentService.FormalName}</h1>
     </div>
-    <!-- Background Image -->
     <picture class="cs-background">
-        <source media="(max-width: 600px)" srcset="/assets/images/services-m.webp">
-        <source media="(min-width: 601px)" srcset="/assets/images/services.webp">
-        <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/images/services.webp" alt="Service Background" width="1920" height="375">
+      <source media="(max-width: 600px)" srcset="/assets/images/services-m.webp" />
+      <source media="(min-width: 601px)" srcset="/assets/images/services.webp" />
+      <img fetchpriority="high" decoding="async" src="/assets/images/services.webp" alt="services" width="1280" height="568" aria-hidden="true" />
     </picture>
-</div>
-
-<section id="content-page-1533">
+  </div>
+  
+  <!-- ============================================ -->
+  <!--                 Side By Side                 -->
+  <!-- ============================================ -->
+  
+  <section id="RPsbs-1280">
     <div class="cs-container">
-        <div class="cs-image-group">
-            <!-- Flower -->
-            <img class="cs-flower" src="/assets/images/svg/flower.svg" alt="flower" loading="lazy" decoding="async" height="148" width="153">
-            <picture class="cs-background">
-                <!-- Mobile Image -->
-                <source media="(max-width: 600px)" srcset={currentService.ImagePath}>
-                <!-- Tablet and above Image -->
-                <source media="(min-width: 601px)" srcset={currentService.ImagePath}>
-                <img loading="lazy" decoding="async" src={currentService.ImagePath} alt="Service Image" width="522" height="540">
-            </picture>
-            <!-- Floating Blob -->
-            <img class="cs-floater" src="/assets/images/svg/blob.svg" alt="graphic" loading="lazy" decoding="async" height="710" width="690">
+      <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset={`/assets/images${currentService.ImagePath}-m.webp`} />
+        <source media="(min-width: 601px)" srcset={`/assets/images${currentService.ImagePath}.webp`} />
+        <img loading="lazy" decoding="async" src={`/assets/images${currentService.ImagePath}.webp`} alt={currentService.FormalName} width="738" height="598" />
+      </picture>
+      <div class="cs-content">
+        <div class="cs-flex">
+          <span class="cs-topper">Affordable {currentService.FormalName}</span>
+          <h3 class="cs-title">{currentService.Title1}</h3>
         </div>
-        <div class="cs-content">
-            {currentService.Definition && currentService.Definition.length > 1 ? (
-                <div set:html={currentService.Definition} />
-            ) : (
-                <>
-                    <h2>{currentService.FormalName}</h2>
-                    <p set:html={currentService.Description}></p>
-                </>
-            )}
-        </div>
+        <div set:html={currentService.Description1}></div>
+      </div>
     </div>
-    <div class="cs-bubbles" aria-hidden="true"></div>
-</section>
+    <picture class="cs-background">
+      <source media="(max-width: 600px)" srcset="/assets/images/svg/white-waves-m.svg" />
+      <source media="(min-width: 601px)" srcset="/assets/images/svg/white-waves.svg" />
+      <img loading="lazy" decoding="async" src="/assets/images/svg/white-waves.svg" alt="waves" width="960" height="839" />
+    </picture>
+  </section>
+  
+  <!-- ============================================ -->
+  <!--             Side By Side Reverse             -->
+  <!-- ============================================ -->
+  
+  <section id="RPsbsr-1280">
+    <div class="cs-container">
+      <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset={`/assets/images${currentService.ImagePath2}-m.webp`} />
+        <source media="(min-width: 601px)" srcset={`/assets/images${currentService.ImagePath2}.webp`} />
+        <img loading="lazy" decoding="async" src={`/assets/images${currentService.ImagePath2}.webp`} alt={currentService.FormalName} width="738" height="598" />
+      </picture>
+      <div class="cs-content">
+        <div class="cs-flex">
+          <span class="cs-topper">Quality {currentService.FormalName}</span>
+          <h3 class="cs-title">{currentService.Title2}</h3>
+        </div>
+        <div set:html={currentService.Description2}></div>
+      </div>
+    </div>
+    <picture class="cs-background">
+      <source media="(max-width: 600px)" srcset="/assets/images/svg/white-waves-m.svg" />
+      <source media="(min-width: 601px)" srcset="/assets/images/svg/white-waves.svg" />
+      <img loading="lazy" decoding="async" src="/assets/images/svg/white-waves.svg" alt="waves" width="960" height="839" />
+    </picture>
+  </section>
+  
+  <Articles />
+  
+  <Contact />
 
 </BaseLayout>
 <style lang="less">
-    /*-- -------------------------- -->
+/*-- -------------------------- -->
 <---        Content Page        -->
 <--- -------------------------- -*/
 
@@ -335,140 +358,816 @@ const optimizedImage = await getOptimizedImage(landingImage)
         width: 53%;
     }
 }
+
 /*-- -------------------------- -->
-<---        Why Choose Us       -->
+<---        Side By Side        -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #why-choose-1662 {
+    #RTsbs-1281,
+    #RTsbsr-1281,
+    #RTsbst-1281 {
         padding: var(--sectionPadding);
-        background-color: #f7f7f7;
-        position: relative;
         overflow: hidden;
+        position: relative;
         z-index: 1;
     }
 
-        #why-choose-1662 .cs-container {
+        #RTsbs-1281 .cs-container,
+        #RTsbsr-1281 .cs-container,
+        #RTsbst-1281 .cs-container {
             width: 100%;
-            max-width: 80rem;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
             margin: auto;
             display: flex;
+            justify-content: center;
+            align-items: stretch;
             flex-direction: column;
-            align-items: center;
-            /* 40px - 64px */
-            gap: clamp(2.5rem, 3.9vw, 4rem);
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
         }
 
-        #why-choose-1662 .cs-content {
+        #RTsbs-1281 .cs-content,
+        #RTsbsr-1281 .cs-content,
+        #RTsbst-1281 .cs-content {
+            /* set text align to left if content needs to be left aligned */
             text-align: left;
             width: 100%;
             display: flex;
             flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
             align-items: flex-start;
         }
 
-        #why-choose-1662 .cs-title {
-            margin: 0;
-            max-width: 23ch;
+        #RTsbs-1281 .cs-title,
+        #RTsbsr-1281 .cs-title,
+        #RTsbst-1281 .cs-title {
+            max-width: 20ch;
         }
 
-        #why-choose-1662 .cs-wrapper {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            /* 16px - 32px */
-            gap: clamp(1rem, 3.2vw, 2rem);
+        #RTsbs-1281 .cs-text,
+        #RTsbsr-1281 .cs-text,
+        #RTsbst-1281 .cs-text {
+            margin-bottom: 1rem;
         }
 
-        #why-choose-1662 .cs-card-group {
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            /* 16px - 32px */
-            gap: clamp(1rem, 2vw, 2rem);
-        }
+            #RTsbs-1281 .cs-text:last-of-type,
+            #RTsbsr-1281 .cs-text:last-of-type,
+            #RTsbst-1281 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
 
-        #why-choose-1662 .cs-item {
-            list-style: none;
-            /* prevents padding from affecting height and width */
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        #why-choose-1662 .cs-item-wrapper {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        #why-choose-1662 .cs-item-number {
-            font-size: 1.25rem;
-            line-height: 1.2em;
-            font-weight: 700;
-            margin: 0;
-            color: var(--primary);
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        #why-choose-1662 .cs-h3 {
-            font-size: 1.25rem;
-            line-height: 1.2em;
-            font-weight: 700;
-            margin: 0;
-            color: var(--headerColor);
-        }
-
-        #why-choose-1662 .cs-item-text {
+        #RTsbs-1281 .cs-button-solid,
+        #RTsbsr-1281 .cs-button-solid,
+        #RTsbst-1281 .cs-button-solid {
             font-size: 1rem;
-            line-height: 1.5em;
-            margin: 0;
-            color: var(--bodyTextColor);
-        }
-
-        #why-choose-1662 .cs-floater {
-            /* 246px - 582px */
-            width: clamp(15.375rem, 50vw, 36.375rem);
-            height: auto;
-            position: absolute;
-            right: -4rem;
-            top: -0.5rem;
-            z-index: -1;
-        }
-
-        #why-choose-1662 .cs-link {
-            /* 14px - 16px */
-            line-height: 1.5em;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
             text-decoration: none;
+            font-weight: 700;
+            text-align: center;
             margin: 0;
-            color: #bababa;
-            display: block;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
             transition: color 0.3s;
         }
 
-            #why-choose-1662 .cs-link:hover {
-                color: var(--primary);
+            #RTsbs-1281 .cs-button-solid:before,
+            #RTsbsr-1281 .cs-button-solid:before,
+            #RTsbst-1281 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #RTsbs-1281 .cs-button-solid:hover,
+            #RTsbsr-1281 .cs-button-solid:hover,
+            #RTsbst-1281 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #RTsbs-1281 .cs-button-solid:hover:before,
+                #RTsbsr-1281 .cs-button-solid:hover:before,
+                #RTsbst-1281 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #RTsbs-1281 .cs-picture,
+        #RTsbsr-1281 .cs-picture,
+        #RTsbst-1281 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #RTsbs-1281 .cs-picture:before,
+            #RTsbsr-1281 .cs-picture:before,
+            #RTsbst-1281 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #RTsbs-1281 .cs-picture img,
+            #RTsbsr-1281 .cs-picture img,
+            #RTsbst-1281 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #RTsbs-1281 .cs-background,
+        #RTsbsr-1281 .cs-background,
+        #RTsbst-1281 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #RTsbs-1281 .cs-background img,
+            #RTsbsr-1281 .cs-background img,
+            #RTsbst-1281 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
             }
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #why-choose-1662 .cs-wrapper {
+    #RTsbs-1281 .cs-content,
+    #RTsbsr-1281 .cs-content,
+    #RTsbst-1281 .cs-content {
         flex-direction: row;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #RTsbs-1281 .cs-flex,
+    #RTsbsr-1281 .cs-flex,
+    #RTsbst-1281 .cs-flex {
+        width: 45%;
+    }
+
+    #RTsbs-1281 .cs-title,
+    #RTsbsr-1281 .cs-title,
+    #RTsbst-1281 .cs-title {
+        margin: 0;
+    }
+
+    #RTsbs-1281 .cs-text,
+    #RTsbsr-1281 .cs-text,
+    #RTsbst-1281 .cs-text {
+        width: 50%;
+    }
+
+    #RTsbs-1281 .cs-button-solid,
+    #RTsbsr-1281 .cs-button-solid,
+    #RTsbst-1281 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbs-1281,
+    #RTsbsr-1281,
+    #RTsbst-1281 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #RTsbs-1281 .cs-container,
+        #RTsbsr-1281 .cs-container,
+        #RTsbst-1281 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #RTsbs-1281 .cs-content,
+        #RTsbsr-1281 .cs-content,
+        #RTsbst-1281 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #RTsbs-1281 .cs-flex,
+        #RTsbsr-1281 .cs-flex,
+        #RTsbst-1281 .cs-flex {
+            width: 100%;
+        }
+
+        #RTsbs-1281 .cs-title,
+        #RTsbsr-1281 .cs-title,
+        #RTsbst-1281 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #RTsbs-1281 .cs-text,
+        #RTsbsr-1281 .cs-text,
+        #RTsbst-1281 .cs-text {
+            width: 100%;
+        }
+
+        #RTsbs-1281 .cs-picture,
+        #RTsbsr-1281 .cs-picture,
+        #RTsbst-1281 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #RTsbs-1281 .cs-background,
+        #RTsbsr-1281 .cs-background,
+        #RTsbst-1281 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            border-radius: 0 0 1rem 0;
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---   Side By Side Reverse     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbsr-1281 .cs-content {
+        order: -1;
+    }
+
+    #RTsbsr-1281 .cs-background {
+        margin: 0;
+        /* 172px - 336px */
+        margin-left: clamp(11.125rem, 30vw, 21rem);
+        border-radius: 1rem 0 0 1rem;
+        left: 50%;
+        right: auto;
     }
 }
 
+/*-- -------------------------- -->
+<---   Side By Side Triplet     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbst-1281 .cs-background {
+        border-radius: 0 1rem 0 0;
+    }
+}
+
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #sbs-1278 {
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #sbs-1278 .cs-container {
+            width: 100%;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
+        }
+
+        #sbs-1278 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #sbs-1278 .cs-title {
+            max-width: 20ch;
+        }
+
+        #sbs-1278 .cs-text {
+            margin-bottom: 1rem;
+        }
+
+            #sbs-1278 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+        #sbs-1278 .cs-button-solid {
+            font-size: 1rem;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+            transition: color 0.3s;
+        }
+
+            #sbs-1278 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #sbs-1278 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #sbs-1278 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #sbs-1278 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #sbs-1278 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #sbs-1278 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #sbs-1278 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #sbs-1278 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #sbs-1278 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #sbs-1278 .cs-flex {
+        width: 45%;
+    }
+
+    #sbs-1278 .cs-title {
+        margin: 0;
+    }
+
+    #sbs-1278 .cs-text {
+        width: 50%;
+    }
+
+    #sbs-1278 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #sbs-1278 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #sbs-1278 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #sbs-1278 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #sbs-1278 .cs-flex {
+            width: 100%;
+        }
+
+        #sbs-1278 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #sbs-1278 .cs-text {
+            width: 100%;
+        }
+
+        #sbs-1278 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #sbs-1278 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #RPsbs-1280,
+    #RPsbsr-1280 {
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+        #RPsbs-1280 .cs-container,
+        #RPsbsr-1280 .cs-container {
+            width: 100%;
+            /* changes to 1280px at desktop */
+            max-width: 53.125rem;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            /* 48px - 108px */
+            gap: clamp(3rem, 5vw, 6.75rem);
+        }
+
+        #RPsbs-1280 .cs-content,
+        #RPsbsr-1280 .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        #RPsbs-1280 .cs-title,
+        #RPsbsr-1280 .cs-title {
+            max-width: 20ch;
+        }
+
+        #RPsbs-1280 .cs-text,
+        #RPsbsr-1280 .cs-text {
+            margin-bottom: 1rem;
+        }
+
+            #RPsbs-1280 .cs-text:last-of-type,
+            #RPsbsr-1280 .cs-text:last-of-type {
+                margin-bottom: 2rem;
+            }
+
+        #RPsbs-1280 .cs-button-solid,
+        #RPsbsr-1280 .cs-button-solid {
+            font-size: 1rem;
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            border: none;
+            min-width: 9.375rem;
+            padding: 0 1.5rem;
+            background-color: var(--primary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+            transition: color 0.3s;
+        }
+
+            #RPsbs-1280 .cs-button-solid:before,
+            #RPsbsr-1280 .cs-button-solid:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            #RPsbs-1280 .cs-button-solid:hover,
+            #RPsbsr-1280 .cs-button-solid:hover {
+                color: #fff;
+            }
+
+                #RPsbs-1280 .cs-button-solid:hover:before,
+                #RPsbsr-1280 .cs-button-solid:hover:before {
+                    width: 100%;
+                }
+
+        #RPsbs-1280 .cs-picture,
+        #RPsbsr-1280 .cs-picture {
+            width: 100%;
+            /* 456px - 598px */
+            height: clamp(28.5rem, 46vw, 37.375rem);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: block;
+            /* sends it to the bottom in the 2nd position */
+            order: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+            #RPsbs-1280 .cs-picture:before,
+            #RPsbsr-1280 .cs-picture:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            #RPsbs-1280 .cs-picture img,
+            #RPsbsr-1280 .cs-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        #RPsbs-1280 .cs-background,
+        #RPsbsr-1280 .cs-background {
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            #RPsbs-1280 .cs-background img,
+            #RPsbsr-1280 .cs-background img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #RPsbs-1280 .cs-content,
+    #RPsbsr-1280 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    #RPsbs-1280 .cs-flex,
+    #RPsbsr-1280 .cs-flex {
+        width: 45%;
+    }
+
+    #RPsbs-1280 .cs-title,
+    #RPsbsr-1280 .cs-title {
+        margin: 0;
+    }
+
+    #RPsbs-1280 .cs-text,
+    #RPsbsr-1280 .cs-text {
+        width: 50%;
+    }
+
+    #RPsbs-1280 .cs-button-solid,
+    #RPsbsr-1280 .cs-button-solid {
+        margin-right: auto;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RPsbs-1280,
+    #RPsbsr-1280 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+    }
+
+        #RPsbs-1280 .cs-container,
+        #RPsbsr-1280 .cs-container {
+            max-width: 80rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #RPsbs-1280 .cs-content,
+        #RPsbsr-1280 .cs-content {
+            width: 100%;
+            max-width: 27.0625rem;
+            margin: 0;
+            flex-direction: column;
+            order: 2;
+            row-gap: 0;
+        }
+
+        #RPsbs-1280 .cs-flex,
+        #RPsbsr-1280 .cs-flex {
+            width: 100%;
+        }
+
+        #RPsbs-1280 .cs-title,
+        #RPsbsr-1280 .cs-title {
+            margin: 0 0 1rem 0;
+            color: var(--headerColor);
+        }
+
+        #RPsbs-1280 .cs-text,
+        #RPsbsr-1280 .cs-text {
+            width: 100%;
+        }
+
+        #RPsbs-1280 .cs-picture,
+        #RPsbsr-1280 .cs-picture {
+            max-width: 46.125rem;
+            order: 1;
+        }
+
+        #RPsbs-1280 .cs-background,
+        #RPsbsr-1280 .cs-background {
+            width: 60vw;
+            height: 100%;
+            /* 172px - 336px */
+            margin-right: clamp(11.125rem, 30vw, 21rem);
+            border-radius: 0 0 1rem 0;
+            left: auto;
+            right: 50%;
+            top: 0;
+        }
+}
+
+/*-- -------------------------- -->
+<---   Side By Side Reverse     -->
+<--- -------------------------- -*/
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RPsbsr-1280 .cs-content {
+        order: -1;
+    }
+
+    #RPsbsr-1280 .cs-background {
+        margin: 0;
+        /* 172px - 336px */
+        margin-left: clamp(11.125rem, 30vw, 21rem);
+        border-radius: 1rem 0 0 0;
+        left: 50%;
+        right: auto;
+    }
+}                                
 </style>

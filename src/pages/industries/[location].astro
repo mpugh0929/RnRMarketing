@@ -4,6 +4,7 @@ import locationData from '@data/locationData.json';
 import services from '@data/serviceData.json';
 import Testimonial from "@components/Testimonial.astro";
 import Contact from "@components/Contact.astro";
+import Landing from "@components/Landing.astro";
 
 export async function getStaticPaths() {
   // Generate paths for each location
@@ -34,25 +35,10 @@ const optimizedImage = await getOptimizedImage(landingImage)
   preloadedImage={optimizedImage}
 >
 
-<!-- ============================================ -->
-<!--                   Banner                     -->
-<!-- ============================================ -->
-
-<div id="ContactBanner-327">
-    <div class="cs-container">
-      <span class="cs-int-title">{currentLocation.FormalName}</span>
-      <div class="cs-breadcrumbs">
-        <a href="/" class="cs-link">Home</a>
-        <a href="/locations" class="cs-link">Locations</a>
-        <a href="#" class="cs-link cs-active">{currentLocation.FormalName}</a>
-      </div>
-    </div>
-    <picture class="cs-background">
-      <source media="(max-width: 600px)" srcset="/assets/images/locations-m.webp" />
-      <source media="(min-width: 601px)" srcset="/assets/images/locations.webp" />
-      <img aria-hidden="true" fetchpriority="high" decoding="async" src="/assets/images/locations.webp" alt="farm" width="1920" height="375" />
-    </picture>
-  </div>
+<Landing 
+    title="Paid Digital Advertising"
+    image={optimizedImage}
+  />
   
   <!-- ============================================ -->
   <!--                 Side By Side                 -->
