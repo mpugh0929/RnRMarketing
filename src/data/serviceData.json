@@ -8,7 +8,8 @@
         "Description2": "<p class=\"cs-text\">We'll develop your restoration website with features critical to your success: emergency contact forms, service area maps, before/after galleries, and certification displays. Our mobile-first approach ensures property owners can easily contact you during disasters. We integrate insurance information, testimonials, and clear calls-to-action to help convert visitors into qualified leads while establishing your restoration expertise.</p>",
         "ImagePath": "/webdesign1",
         "ImagePath2": "/webdesign2",
-        "ShortDescription": "Your restoration website needs to convert emergency calls 24/7 while building trust with property owners and insurance partners. Let us create your perfect lead-generating platform."
+        "ShortDescription": "Your restoration website needs to convert emergency calls 24/7 while building trust with property owners and insurance partners. Let us create your perfect lead-generating platform.",
+        "IconName": "seo"
     },
     {
         "FormalName": "SEO",
@@ -19,7 +20,8 @@
         "Description2": "<p class=\"cs-text\">We build your restoration company's online authority through targeted local SEO, strategic content creation, and technical optimization. Our approach focuses on ranking for emergency services while building lasting relationships with insurance companies and property managers. From optimizing service pages to creating location-specific content, we ensure your restoration company appears when and where it matters most.</p>",
         "ImagePath": "/seo1",
         "ImagePath2": "/seo2",
-        "ShortDescription": "Proper SEO ensures your restoration company appears first when property owners need emergency services. Let us help you capture more high-value restoration leads."
+        "ShortDescription": "Proper SEO ensures your restoration company appears first when property owners need emergency services. Let us help you capture more high-value restoration leads.",
+        "IconName": "seo"
     },
     {
         "FormalName": "PPC & LSA Campaigns",
@@ -30,8 +32,8 @@
         "Description2": "<p class=\"cs-text\">We manage your restoration company's paid search campaigns with precision, targeting emergency keywords and optimizing for cost-effective lead generation. Our strategies include weather-triggered ads, location-specific targeting, and insurance-focused campaigns. Through careful budget management and continuous optimization, we help you secure more restoration jobs while controlling customer acquisition costs.</p>",
         "ImagePath": "/ppc1",
         "ImagePath2": "/ppc2",
-        "ShortDescription": "PPC and LSA campaigns deliver immediate visibility when property owners need emergency restoration services. Let us manage your campaigns for maximum ROI."
-    },
+        "ShortDescription": "PPC and LSA campaigns deliver immediate visibility when property owners need emergency restoration services. Let us manage your campaigns for maximum ROI.",
+        "IconName": "seo"
     {
         "FormalName": "Social Media",
         "Name": "social-media",
@@ -41,7 +43,8 @@
         "Description2": "<p class=\"cs-text\">We create engaging content that highlights your restoration expertise, from before/after photos to emergency preparedness tips. Our social strategies help you connect with property managers, insurance adjusters, and local businesses while building community trust. We focus on platforms where your ideal customers spend time, ensuring your restoration company stays top-of-mind for property damage emergencies.</p>",
         "ImagePath": "/socialmedia1",
         "ImagePath2": "/socialmedia2",
-        "ShortDescription": "Strong social media presence builds trust and credibility for your restoration company. Let us handle your social media while you focus on serving customers."
+        "ShortDescription": "Strong social media presence builds trust and credibility for your restoration company. Let us handle your social media while you focus on serving customers.",
+        "IconName": "seo"
     },
     {
         "FormalName": "Reputation Management",
@@ -52,6 +55,7 @@
         "Description2": "<p class=\"cs-text\">Our reputation management services help your restoration company maintain a sterling online presence that attracts both property owners and insurance partners. We implement automated review collection systems, monitor online mentions, and help showcase your best testimonials. With our proven strategies, you'll build a robust online reputation that drives referrals and establishes your company as the trusted local restoration expert.</p>",
         "ImagePath": "/repmanage1",
         "ImagePath2": "/repmanage1",
-        "ShortDescription": "Your online reputation directly impacts your restoration company's success. Let us help you build and maintain a five-star reputation that drives referrals."
+        "ShortDescription": "Your online reputation directly impacts your restoration company's success. Let us help you build and maintain a five-star reputation that drives referrals.",
+        "IconName": "seo"
     }
 ]
