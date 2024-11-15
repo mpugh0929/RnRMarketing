@@ -9,7 +9,7 @@
         "ImagePath": "/webdesign1",
         "ImagePath2": "/webdesign2",
         "ShortDescription": "Your restoration website needs to convert emergency calls 24/7 while building trust with property owners and insurance partners. Let us create your perfect lead-generating platform.",
-        "IconName": "seo"
+        "IconName": "webdesign"
     },
     {
         "FormalName": "SEO",
@@ -33,7 +33,8 @@
         "ImagePath": "/ppc1",
         "ImagePath2": "/ppc2",
         "ShortDescription": "PPC and LSA campaigns deliver immediate visibility when property owners need emergency restoration services. Let us manage your campaigns for maximum ROI.",
-        "IconName": "seo"
+        "IconName": "ppc"
+    },
     {
         "FormalName": "Social Media",
         "Name": "social-media",
@@ -44,7 +45,7 @@
         "ImagePath": "/socialmedia1",
         "ImagePath2": "/socialmedia2",
         "ShortDescription": "Strong social media presence builds trust and credibility for your restoration company. Let us handle your social media while you focus on serving customers.",
-        "IconName": "seo"
+        "IconName": "social"
     },
     {
         "FormalName": "Reputation Management",
@@ -56,6 +57,18 @@
         "ImagePath": "/repmanage1",
         "ImagePath2": "/repmanage1",
         "ShortDescription": "Your online reputation directly impacts your restoration company's success. Let us help you build and maintain a five-star reputation that drives referrals.",
-        "IconName": "seo"
+        "IconName": "reputation"
+    },
+    {
+        "FormalName": "Lead Tracking & Analytics",
+        "Name": "lead-tracking",
+        "Title1": "Track Every Marketing Dollar's Performance",
+        "Description1": "<p class=\"cs-text\">Know exactly which marketing channels are delivering your best restoration leads. Our advanced tracking system monitors calls, form submissions, and chat interactions to measure true ROI from each campaign. Get detailed insights on lead quality, conversion rates, and cost per acquisition.</p>",
+        "Title2": "Data-Driven Decisions for Maximum ROI",
+        "Description2": "<p class=\"cs-text\">Our comprehensive analytics dashboard provides real-time visibility into your marketing performance. Track emergency vs. non-emergency leads, monitor call handling efficiency, and measure booking rates. We integrate call recording, form tracking, and revenue data to show the complete journey from click to completed job. Regular performance reviews help optimize campaigns for maximum return on your marketing investment.</p>",
+        "ImagePath": "/analytics1",
+        "ImagePath2": "/analytics2",
+        "ShortDescription": "Get complete visibility into your marketing performance with detailed tracking of leads, calls, and ROI across all channels.",
+        "IconName": "growth"
     }
 ]

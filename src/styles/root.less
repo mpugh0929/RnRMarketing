@@ -301,3 +301,27 @@
     }
   }
 }
+
+/* Hides the element on all screen sizes */
+.d-none {
+  display: none !important;
+}
+
+/* Displays the element as a block on large screens and above */
+@media (min-width: 992px) {
+  .d-lg-block {
+    display: block !important;
+  }
+}
+
+/* Displays the element as a block on all screen sizes by default */
+.d-block {
+  display: block !important;
+}
+
+/* Hides the element on large screens and above */
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none !important;
+  }
+}

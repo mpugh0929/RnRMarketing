@@ -4,6 +4,7 @@ import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import Contact from "@components/Contact.astro";
 import CSPicture from "@components/TemplateComponents/CSPicture.astro";
+import Services from "@components/ServicesDisplay.astro";
 
 import { Picture } from 'astro:assets';
 import { Image } from 'astro:assets';
@@ -218,6 +219,8 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
         <a href="/contact" class="cs-button-solid">Schedule Your Strategy Call</a>
     </div>
   </section>
+
+  <Services />
                               
   <FAQ />  
 
