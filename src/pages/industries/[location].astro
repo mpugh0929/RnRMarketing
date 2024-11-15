@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import industriesData from '@data/industriesData.json';
+import industryData from '@data/industryData.json';
 import services from '@data/serviceData.json';
 import Testimonial from "@components/Testimonial.astro";
 import Contact from "@components/Contact.astro";
@@ -8,13 +8,13 @@ import Landing from "@components/Landing.astro";
 
 export async function getStaticPaths() {
   // Generate paths for each Industry
-  return industriesData.map(Industry => ({
+  return industryData.map(Industry => ({
     params: { Industry: Industry.Name }, // `name` should match the identifier in your JSON
   }));
 }
 
 const { Industry } = Astro.params; // Get the service slug from the URL parameters
-const currentIndustry = industriesData.find(l => l.Name === Industry);
+const currentIndustry = industryData.find(l => l.Name === Industry);
 
 if (!currentIndustry) {
   throw new Error(`Industry not found for: ${Industry}`);
