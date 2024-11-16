@@ -5,6 +5,7 @@ import Articles from "@components/Articles.astro";
 import Contact from "@components/Contact.astro";
 import Landing from "@components/Landing.astro";
 import CTA from "@components/CTA.astro";
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -51,11 +52,13 @@ const optimizedImage = await getOptimizedImage(landingImage);
 <section id="RTsbs-1365">
     <div class="cs-container">
         <div class="cs-image-group">
-            <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${service.data.ImagePath}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${service.data.ImagePath}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${service.data.ImagePath}.webp`} alt={`${service.data.FormalName} for ${industry.data.FormalName}`} width="690" height="690">
-            </picture>
+            <Image 
+                src={service.data.ImagePath}
+                alt={`${service.data.FormalName} for ${industry.data.FormalName}`}
+                width="690" 
+                height="690"
+                class="cs-background"
+            />
         </div>
         <div class="cs-content">
             <span class="cs-topper">{industry.data.FormalName} EXPERTS</span>
@@ -66,7 +69,7 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <p class="cs-text">
                 <div set:html={service.data.Description1}></div>
             </p>           
-            <a href="/contact" class="cs-button-solid">Schedule Your Strategy Call</a>
+            <a href="https://calendly.com/matt-remediationrestorationmarketing/30min" class="cs-button-solid mt-3">Schedule Your Strategy Call</a>
         </div>
     </div>
     <div class="cs-bubbles" aria-hidden="true"></div>
@@ -76,11 +79,13 @@ const optimizedImage = await getOptimizedImage(landingImage);
 <section id="RTsbsr-1365">
     <div class="cs-container">
         <div class="cs-image-group">
-            <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${industry.data.ImagePath}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${industry.data.ImagePath}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${industry.data.ImagePath}.webp`} alt={`${service.data.FormalName} Benefits for ${industry.data.FormalName}`} width="690" height="690">
-            </picture>
+            <Image 
+                src={industry.data.ImagePath}
+                alt={`${service.data.FormalName} Benefits for ${industry.data.FormalName}`}
+                width="690" 
+                height="690"
+                class="cs-background"
+            />
         </div>
         <div class="cs-content">
             <span class="cs-topper">SPECIALIZED SOLUTIONS</span>
@@ -88,21 +93,20 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <p class="cs-text">
                 <div set:html={service.data.Description2}></div>
             </p>   
-            
-            <ul class="cs-ul">
+            <ul id="list-1405" class="cs-ul mt-3">
                 <li class="cs-li">
-                    <span class="cs-header">24/7 Emergency Focus</span>
-                    <p>Capture urgent {industry.data.Name} calls when property owners need immediate help</p>
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">24/7 Emergency Focus:</span> Capture urgent {industry.data.Name} calls when property owners need immediate help</p>
                 </li>
                 <li class="cs-li">
-                    <span class="cs-header">Industry Expertise</span>
-                    <p>Specialized {service.data.FormalName} strategies for {industry.data.Name} companies</p>
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Industry Expertise:</span> Specialized {service.data.FormalName} strategies for {industry.data.Name} companies</p>
                 </li>
                 <li class="cs-li">
-                    <span class="cs-header">Quality Lead Generation</span>
-                    <p>Target property owners and insurance partners, not unqualified leads</p>
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Quality Lead Generation:</span> Target property owners and insurance partners, not unqualified leads</p>
                 </li>
-            </ul>
+            </ul>               
             
             <a href="https://calendly.com/matt-remediationrestorationmarketing/30min" class="cs-button-solid">Learn More</a>
         </div>
@@ -114,11 +118,13 @@ const optimizedImage = await getOptimizedImage(landingImage);
 <section id="RTsbst-1365">
     <div class="cs-container">
         <div class="cs-image-group">
-            <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${service.data.ImagePath2}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${service.data.ImagePath2}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${service.data.ImagePath2}.webp`} alt={`Complete ${service.data.FormalName} Solution`} width="690" height="690">
-            </picture>
+            <Image 
+                src={service.data.ImagePath2}
+                alt={`Complete ${service.data.FormalName} Solution`}
+                width="690" 
+                height="690"
+                class="cs-background"
+            />
         </div>
         <div class="cs-content">
             <span class="cs-topper">COMPLETE SOLUTION</span>
@@ -126,15 +132,26 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <p class="cs-text">
                 Our comprehensive {service.data.FormalName} solution is designed specifically for {industry.data.Name} companies. We understand the unique challenges of marketing emergency restoration services and have developed proven strategies to help you:
             </p>            
-            
-            <ul class="cs-ul">
-                <li class="cs-li">Capture more emergency calls</li>
-                <li class="cs-li">Build relationships with insurance partners</li>
-                <li class="cs-li">Establish local market authority</li>
-                <li class="cs-li">Track and improve marketing ROI</li>
+            <ul id="list-1405" class="cs-ul">
+                <li class="cs-li">
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Capture more emergency calls</p>
+                </li>
+                <li class="cs-li">
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Build relationships with insurance partners</p>
+                </li>
+                <li class="cs-li">
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Establish local market authority</p>
+                </li>
+                <li class="cs-li">
+                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <p><span class="font-bold">Track and improve marketing ROI</p>
+                </li>
             </ul>
 
-            <a href="/contact" class="cs-button-solid">Book Your Strategy Call</a>
+            <a href="https://calendly.com/matt-remediationrestorationmarketing/30min" class="cs-button-solid">Book Your Strategy Call</a>
         </div>
     </div>
     <div class="cs-bubbles" aria-hidden="true"></div>

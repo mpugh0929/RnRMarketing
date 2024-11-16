@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Testimonial from "@components/Testimonial.astro";
 import Contact from "@components/Contact.astro";
 import Landing from "@components/Landing.astro";
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const industries = await getCollection('industries');
@@ -42,28 +43,32 @@ const optimizedImage = await getOptimizedImage(landingImage)
     image={optimizedImage}
   />
   
-  <section id="sbs-1362">
-    <div class="cs-container">
-      <picture class="cs-picture">
-        <source media="(max-width: 600px)" srcset={`/assets/images${industry.data.ImagePath}`} />
-        <source media="(min-width: 601px)" srcset={`/assets/images${industry.data.ImagePath}`} />
-        <img loading="lazy" decoding="async" src={`/assets/images${industry.data.ImagePath}`} alt="restoration work" width="738" height="598" />
-      </picture>
-      <div class="cs-content">
-        <div class="cs-flex">
-          <span class="cs-topper">{industry.data.FormalName}</span>
-          <h1 class="cs-title">{industry.data.FormalName} Marketing</h1>
+    <!-- ============================================ -->
+    <!--                Side By Side                  -->
+    <!-- ============================================ -->
+
+    <section id="sbs-1362">
+        <div class="cs-container">
+            <div class="cs-image-group">
+                <Image 
+                    src={industry.data.ImagePath}
+                    alt="restoration work" 
+                    width="738" 
+                    height="598"
+                    class="cs-background"
+                />
+            </div>
+            <div class="cs-content">
+                <div class="cs-flex">
+                <span class="cs-topper">{industry.data.FormalName}</span>
+                <h1 class="cs-title">{industry.data.FormalName} Marketing</h1>
+                </div>
+                <div set:html={industry.data.Description}></div>
+                <a href="/contact" class="cs-button-solid mt-4">Schedule Your Strategy Call</a>
+            </div>
         </div>
-        <div set:html={industry.data.Description}></div>
-        <a href="/contact" class="cs-button-solid">Schedule Your Strategy Call</a>
-      </div>
-    </div>
-    <picture class="cs-background mb-5 mb-lg-0">
-      <source media="(max-width: 600px)" srcset="/assets/images/svg/white-waves-m.svg" />
-      <source media="(min-width: 601px)" srcset="/assets/images/svg/white-waves.svg" />
-      <img loading="lazy" decoding="async" src="/assets/images/svg/white-waves.svg" alt="waves" width="960" height="839" />
-    </picture>
-  </section>
+        <div class="cs-bubbles" aria-hidden="true"></div>
+    </section>
   
   <Contact />
 

@@ -19,7 +19,7 @@ const blogsCollection = defineCollection({
 });
 
 const servicesCollection = defineCollection({
-	type: 'data',
+	type: "content",
 	schema: z.object({
 	  FormalName: z.string(),
 	  Name: z.string(),
@@ -35,7 +35,7 @@ const servicesCollection = defineCollection({
 });
 
   const industriesCollection = defineCollection({
-	type: 'data',
+	type: "content",
 	schema: z.object({
 	  FormalName: z.string(),
 	  Name: z.string(),
