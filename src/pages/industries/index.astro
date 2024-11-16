@@ -3,6 +3,7 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import Landing from "@components/Landing.astro";
 import { getCollection } from 'astro:content';
 import Articles from "@components/Articles.astro";
+import { Icon } from 'astro-icon/components';
 
 // Get all industries from the collection
 const industries = await getCollection('industries');
@@ -42,9 +43,9 @@ const secondHalf = industries.slice(midPoint);
               <span class="cs-item-number">{index + 1}</span>
               <div class="cs-item-wrapper">
                 <h3 class="cs-h3">
-                  <a href={`/industries/${industry.data.Name}`} class="cs-link">{industry.data.FormalName}</a>
+                  <a href={`/industries/${industry.data.Name}`} class="cs-link text-black">{industry.data.FormalName}</a>
                 </h3>
-                <p class="cs-item-text">
+                <p class="cs-item-text text-black">
                   {industry.data.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
@@ -56,10 +57,10 @@ const secondHalf = industries.slice(midPoint);
             <li class="cs-item" key={industry.data.Name}>
               <span class="cs-item-number">{index + midPoint + 1}</span>
               <div class="cs-item-wrapper">
-                <h3 class="cs-h3">
-                  <a href={`/industries/${industry.data.Name}`} class="cs-link">{industry.data.FormalName}</a>
+                <h3 class="cs-h3 text-black">
+                  <a href={`/industries/${industry.data.Name}`} class="cs-link text-black">{industry.data.FormalName}</a>
                 </h3>
-                <p class="cs-item-text">
+                <p class="cs-item-text text-black">
                   {industry.data.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
@@ -67,15 +68,12 @@ const secondHalf = industries.slice(midPoint);
           ))}
         </ul>
       </div>
-      <img
-        class="cs-floater"
-        src="/assets/images/svg/phoenix.svg"
-        alt="phoenix"
-        decoding="async"
+      <Icon 
+        name="waves"
         height="710"
         aria-hidden="true"
         width="690"
-      />
+        class="cs-floater">
     </div>
   </section>
 
