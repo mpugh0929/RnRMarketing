@@ -1,68 +1,66 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import Landing from "@components/Landing.astro";
-
-import Industries from '@data/industryData.json';
+import { getCollection } from 'astro:content';
 import Articles from "@components/Articles.astro";
 
-// Split Industries data into two halves for layout
-const half = Math.ceil(Industries.length / 2);
-const firstHalfIndustries = Industries.slice(0, half);
-const secondHalfIndustries = Industries.slice(half);
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+// Get all industries from the collection
+const industries = await getCollection('industries');
+
+// Optimize landing image
 import {getOptimizedImage} from "@libs/utils"
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing.jpg"
 const optimizedImage = await getOptimizedImage(landingImage)
+
+// Calculate the midpoint for splitting the industries into two columns
+const midPoint = Math.ceil(industries.length / 2);
+const firstHalf = industries.slice(0, midPoint);
+const secondHalf = industries.slice(midPoint);
 ---
 
 <BaseLayout
-  title="Industries"
-  description="Explore TRW Contracting's service areas across Maryland, including Baltimore, Carroll County, and more. Discover top-tier construction and renovation services tailored to your community. Contact us today!"
+  title="Areas Of Focus"
+  description="Specialized digital marketing solutions for restoration companies. From water damage to biohazard cleanup, we help restoration companies generate more emergency calls and grow their business."
   preloadedImage = {optimizedImage}
 >
 
-
 <Landing 
-    title="Paid Digital Advertising"
+    title="Areas Of Focus"
     image={optimizedImage}
   />
-  
-  <!-- ============================================ -->
-  <!--                 Why Choose Us                -->
-  <!-- ============================================ -->
   
   <section id="why-choose-1662">
     <div class="cs-container">
       <div class="cs-content">
-        <span class="cs-topper">Our Focus</span>
-        <h2 class="cs-title">Learn About What Parts Of The Business We Focus On</h2>
+        <span class="cs-topper">OUR FOCUS</span>
+        <h2 class="cs-title">Specialized Marketing for Every Type of Restoration Service</h2>
       </div>
       <div class="cs-wrapper">
         <ul class="cs-card-group">
-          {Industries.slice(0, Math.ceil(Industries.length / 2)).map((industry, index) => (
-            <li class="cs-item" key={industry.Name}>
+          {firstHalf.map((industry, index) => (
+            <li class="cs-item" key={industry.data.Name}>
               <span class="cs-item-number">{index + 1}</span>
               <div class="cs-item-wrapper">
                 <h3 class="cs-h3">
-                  <a href={`/Industries/${industry.Name}`} class="cs-link">{industry.FormalName}</a>
+                  <a href={`/industries/${industry.data.Name}`} class="cs-link">{industry.data.FormalName}</a>
                 </h3>
                 <p class="cs-item-text">
-                  {industry.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
+                  {industry.data.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
             </li>
           ))}
         </ul>
         <ul class="cs-card-group">
-          {Industries.slice(Math.ceil(Industries.length / 2)).map((industry, index) => (
-            <li class="cs-item" key={industry.Name}>
-              <span class="cs-item-number">{index + Math.ceil(Industries.length / 2) + 1}</span>
+          {secondHalf.map((industry, index) => (
+            <li class="cs-item" key={industry.data.Name}>
+              <span class="cs-item-number">{index + midPoint + 1}</span>
               <div class="cs-item-wrapper">
                 <h3 class="cs-h3">
-                  <a href={`/Industries/${industry.Name}`} class="cs-link">{industry.FormalName}</a>
+                  <a href={`/industries/${industry.data.Name}`} class="cs-link">{industry.data.FormalName}</a>
                 </h3>
                 <p class="cs-item-text">
-                  {industry.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
+                  {industry.data.Description.replace(/(<([^>]+)>)/gi, '').slice(0, 100)}...
                 </p>
               </div>
             </li>

@@ -1,69 +1,70 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import services from '@data/serviceData.json';
-import industries from '@data/industryData.json';
+import { getCollection } from 'astro:content';
 import Articles from "@components/Articles.astro";
 import Contact from "@components/Contact.astro";
 import Landing from "@components/Landing.astro";
+import CTA from "@components/CTA.astro";
 
 export async function getStaticPaths() {
-  const paths = services.flatMap(service =>
+  const services = await getCollection('services');
+  const industries = await getCollection('industries');
+  
+  return services.flatMap(service =>
     industries.map(industry => ({
-      params: { service: service.Name, industry: industry.Name },  // Use `service` and `industry` keys here
+      params: { 
+        service: service.data.Name, 
+        industry: industry.data.Name 
+      },
+      props: { 
+        service: service,
+        industry: industry
+      }
     }))
   );
-
-  return paths;  // Return as an object with `paths` key
 }
 
-// Access route parameters directly from `Astro.params`
-const { service, industry } = Astro.params;  // Use `service` and `industry`
-console.log("Astro.params:", Astro.params);
+const { service, industry } = Astro.props;
 
-const selectedService = services.find(s => s.Name === service);
-const selectedIndustry = industries.find(l => l.Name === industry);
-
-if (!selectedService || !selectedIndustry) {
-  throw new Error("Service or industry not found: " + service + " " + industry);
+if (!service || !industry) {
+  throw new Error(`Service or industry not found: ${Astro.params.service} ${Astro.params.industry}`);
 }
 
-// Optimize landing image if necessary
+// Optimize landing image
 import { getOptimizedImage } from "@libs/utils";
-import landingImage from "@assets/images/landing.jpg"; // Path to preload asset in src
+import landingImage from "@assets/images/landing.jpg";
+import ServicesDisplay from "@components/ServicesDisplay.astro";
 const optimizedImage = await getOptimizedImage(landingImage);
 ---
 
 <BaseLayout
-  title={`${selectedService.FormalName} for ${selectedIndustry.FormalName}`}
-  description={`Specialized ${selectedService.FormalName} services designed specifically for ${selectedIndustry.FormalName} companies. Drive more emergency restoration leads and grow your ${selectedIndustry.Name} business.`}
+  title={`${service.data.FormalName} for ${industry.data.FormalName}`}
+  description={`Specialized ${service.data.FormalName} services designed specifically for ${industry.data.FormalName} companies. Drive more emergency restoration leads and grow your ${industry.data.Name} business.`}
   preloadedImage={optimizedImage}
 >
 <Landing 
-    title={`${selectedService.FormalName} for ${selectedIndustry.FormalName}`}
+    title={`${service.data.FormalName} for ${industry.data.FormalName}`}
     image={optimizedImage}
 />
 
-<!-- ============================================ -->
-<!--           Primary Service Section            -->
-<!-- ============================================ -->
-
+<!-- Primary Service Section -->
 <section id="RTsbs-1365">
     <div class="cs-container">
         <div class="cs-image-group">
             <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${selectedService.ImagePath}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${selectedService.ImagePath}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${selectedService.ImagePath}.webp`} alt={`${selectedService.FormalName} for ${selectedIndustry.FormalName}`} width="690" height="690">
+                <source media="(max-width: 600px)" srcset={`/assets/images${service.data.ImagePath}-m.webp`} />
+                <source media="(min-width: 601px)" srcset={`/assets/images${service.data.ImagePath}.webp`} />
+                <img loading="lazy" decoding="async" src={`/assets/images${service.data.ImagePath}.webp`} alt={`${service.data.FormalName} for ${industry.data.FormalName}`} width="690" height="690">
             </picture>
         </div>
         <div class="cs-content">
-            <span class="cs-topper">{selectedIndustry.FormalName} EXPERTS</span>
-            <h2 class="cs-title">{selectedService.Title1}</h2>
+            <span class="cs-topper">{industry.data.FormalName} EXPERTS</span>
+            <h2 class="cs-title">{service.data.Title1}</h2>
             <p class="cs-text">
-                {selectedIndustry.Description}
+                {industry.data.Description}
             </p>
             <p class="cs-text">
-                <div set:html={selectedService.Description1}></div>
+                <div set:html={service.data.Description1}></div>
             </p>           
             <a href="/contact" class="cs-button-solid">Schedule Your Strategy Call</a>
         </div>
@@ -71,34 +72,31 @@ const optimizedImage = await getOptimizedImage(landingImage);
     <div class="cs-bubbles" aria-hidden="true"></div>
 </section>
 
-<!-- ============================================ -->
-<!--            Industry-Specific Benefits        -->
-<!-- ============================================ -->
-
+<!-- Industry-Specific Benefits -->
 <section id="RTsbsr-1365">
     <div class="cs-container">
         <div class="cs-image-group">
             <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${selectedIndustry.ImagePath}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${selectedIndustry.ImagePath}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${selectedIndustry.ImagePath}.webp`} alt={`${selectedService.FormalName} Benefits for ${selectedIndustry.FormalName}`} width="690" height="690">
+                <source media="(max-width: 600px)" srcset={`/assets/images${industry.data.ImagePath}-m.webp`} />
+                <source media="(min-width: 601px)" srcset={`/assets/images${industry.data.ImagePath}.webp`} />
+                <img loading="lazy" decoding="async" src={`/assets/images${industry.data.ImagePath}.webp`} alt={`${service.data.FormalName} Benefits for ${industry.data.FormalName}`} width="690" height="690">
             </picture>
         </div>
         <div class="cs-content">
             <span class="cs-topper">SPECIALIZED SOLUTIONS</span>
-            <h2 class="cs-title">{selectedService.Title2}</h2>
+            <h2 class="cs-title">{service.data.Title2}</h2>
             <p class="cs-text">
-                <div set:html={selectedService.Description2}></div>
+                <div set:html={service.data.Description2}></div>
             </p>   
             
             <ul class="cs-ul">
                 <li class="cs-li">
                     <span class="cs-header">24/7 Emergency Focus</span>
-                    <p>Capture urgent {selectedIndustry.Name} calls when property owners need immediate help</p>
+                    <p>Capture urgent {industry.data.Name} calls when property owners need immediate help</p>
                 </li>
                 <li class="cs-li">
                     <span class="cs-header">Industry Expertise</span>
-                    <p>Specialized {selectedService.FormalName} strategies for {selectedIndustry.Name} companies</p>
+                    <p>Specialized {service.data.FormalName} strategies for {industry.data.Name} companies</p>
                 </li>
                 <li class="cs-li">
                     <span class="cs-header">Quality Lead Generation</span>
@@ -106,30 +104,27 @@ const optimizedImage = await getOptimizedImage(landingImage);
                 </li>
             </ul>
             
-            <a href="/case-studies" class="cs-button-solid">Learn More</a>
+            <a href="https://calendly.com/matt-remediationrestorationmarketing/30min" class="cs-button-solid">Learn More</a>
         </div>
     </div>
     <div class="cs-bubbles" aria-hidden="true"></div>
 </section>
 
-<!-- ============================================ -->
-<!--            Complete Solution                 -->
-<!-- ============================================ -->
-
+<!-- Complete Solution -->
 <section id="RTsbst-1365">
     <div class="cs-container">
         <div class="cs-image-group">
             <picture class="cs-background">
-                <source media="(max-width: 600px)" srcset={`/assets/images${selectedService.ImagePath2}-m.webp`} />
-                <source media="(min-width: 601px)" srcset={`/assets/images${selectedService.ImagePath2}.webp`} />
-                <img loading="lazy" decoding="async" src={`/assets/images${selectedService.ImagePath2}.webp`} alt={`Complete ${selectedService.FormalName} Solution`} width="690" height="690">
+                <source media="(max-width: 600px)" srcset={`/assets/images${service.data.ImagePath2}-m.webp`} />
+                <source media="(min-width: 601px)" srcset={`/assets/images${service.data.ImagePath2}.webp`} />
+                <img loading="lazy" decoding="async" src={`/assets/images${service.data.ImagePath2}.webp`} alt={`Complete ${service.data.FormalName} Solution`} width="690" height="690">
             </picture>
         </div>
         <div class="cs-content">
             <span class="cs-topper">COMPLETE SOLUTION</span>
-            <h2 class="cs-title">Get More {selectedIndustry.FormalName} Jobs</h2>
+            <h2 class="cs-title">Get More {industry.data.FormalName} Jobs</h2>
             <p class="cs-text">
-                Our comprehensive {selectedService.FormalName} solution is designed specifically for {selectedIndustry.Name} companies. We understand the unique challenges of marketing emergency restoration services and have developed proven strategies to help you:
+                Our comprehensive {service.data.FormalName} solution is designed specifically for {industry.data.Name} companies. We understand the unique challenges of marketing emergency restoration services and have developed proven strategies to help you:
             </p>            
             
             <ul class="cs-ul">
@@ -146,7 +141,7 @@ const optimizedImage = await getOptimizedImage(landingImage);
 </section>
 
 <CTA />
-
+<ServicesDisplay industry={industry}/>
 <Articles />
 <Contact />
 </BaseLayout>

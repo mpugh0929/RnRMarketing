@@ -17,6 +17,7 @@ import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE AS
 import landingImageMobile from "@assets/images/hero-img-m-2.jpeg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import restorationGraphic from "@assets/images/results.jpg"
 import number1 from "@assets/images/number 1.jpeg"
+import Newsletter from "@components/Newsletter.astro";
 
 const optimizedImage = await getOptimizedImage(landingImage)
 const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
@@ -225,6 +226,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
   <FAQ />  
 
   <CTA />
+  <Newsletter />
 </BaseLayout>
 
 <style lang="less">
