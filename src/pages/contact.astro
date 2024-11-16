@@ -4,9 +4,12 @@ import client from "@data/client.json";
 import Landing from "@components/Landing.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import {getOptimizedImage} from "@libs/utils"
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-const optimizedImage = await getOptimizedImage(landingImage)
+import {getOptimizedImage} from "@libs/utils";
+import landingImage from "@assets/images/landing/sierra-nevada.jpg";
+import buildingImage from "@assets/images/contact/building.jpeg";
+import { Image } from 'astro:assets';
+
+const optimizedImage = await getOptimizedImage(landingImage);
 ---
 
 <BaseLayout
@@ -110,21 +113,14 @@ const optimizedImage = await getOptimizedImage(landingImage)
         </a>
 
         <!-- Background Image-->
-        <picture class="cs-bg-picture">
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/skyscraper.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/skyscraper.jpg"
+         <Image 
+            src={buildingImage}
             alt="building"
-            loading="lazy"
             width="2500"
             height="1667"
-          />
-        </picture>
+            aria-hidden="true"
+            class="cs-bg-picture"
+         />        
       </div>
     </div>
   </section>

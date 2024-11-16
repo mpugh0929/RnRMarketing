@@ -19,7 +19,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { industry, services } = Astro.props;
+const { industry } = Astro.props;
 
 if (!industry) {
   throw new Error(`Industry not found for: ${Astro.params.industry}`);
@@ -27,7 +27,7 @@ if (!industry) {
 
 // Optimize landing image
 import {getOptimizedImage} from "@libs/utils"
-import landingImage from "@assets/images/landing.jpg"
+import landingImage from "@assets/images/landing/california.jpg"
 import ServicesDisplay from "@components/ServicesDisplay.astro";
 const optimizedImage = await getOptimizedImage(landingImage)
 ---
