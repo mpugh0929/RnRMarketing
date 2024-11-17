@@ -47,7 +47,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
     <div class="cs-bubbles cs-bubbles1" aria-hidden="true"></div>
     <div class="cs-bubbles cs-bubbles2" aria-hidden="true"></div>
     <!-- Background Image, background image added in the css at 1600px for parallax effect -->
-    <picture class="cs-background">
+    <picture class="cs-background" style={`--bg-image: url(${optimizedImage.src});`}>
       <source media="(max-width: 600px)" srcset={optimizedImageMobile.src}>
       <source media="(min-width: 601px)" srcset={optimizedImage.src}>
       <img decoding="async" src={optimizedImage.src} alt="web designer" width="2250" height="1500" aria-hidden="true">
@@ -227,7 +227,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
   <Newsletter />
 </BaseLayout>
 
-<style lang="less">
+<style lang="less" define:vars={{ bgImage: optimizedImage.src }}>
  /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
@@ -577,7 +577,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
 @media only screen and (min-width: 100rem) {
     #hero-1349 {
         .cs-background {
-            background: url("../assets/images/hero-img.png");
+            background: url("/assets/images/hero-img.webp");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
