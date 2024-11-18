@@ -50,16 +50,8 @@ const { description, title, preloadedImage } = Astro.props;
             About Page - About us | Painters and Co.
             -->
             <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
-            }
+                {(`${ title } | ${ client.name }`)
+                }
             </title>
 
             <!-- Decap CMS scripts -->
