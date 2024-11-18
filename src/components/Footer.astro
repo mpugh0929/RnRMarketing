@@ -4,6 +4,7 @@ import navData from "@data/navData.json";
 import { getCurrentYear } from "@libs/utils"
 import logo from "@assets/images/svg/rr-marketing-logo.svg"
 import { Image } from 'astro:assets';
+import { Icon } from "astro-icon/components";
 const currentYear = getCurrentYear()
 ---
 
@@ -45,23 +46,18 @@ const currentYear = getCurrentYear()
           <!--Social-->
           <ul class="cs-social">
               <li class="cs-social-li">
-                  <a href="" class="cs-social-link" aria-label="facebook" target="_blank" rel="noopener">
-                      <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/facebook-ba.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                  <a href="https://www.facebook.com/remediationrestorationmarketing" class="cs-social-link" aria-label="facebook" target="_blank" rel="noopener">
+                    <Icon name="facebook-ba" class="cs-social-icon cs-default" width="12" height="12" aria-hidden="true" />
                   </a>
               </li>
               <li class="cs-social-li">
-                  <a href="" class="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
-                      <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/twitter-ba.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                  <a href="https://www.instagram.com/randr.marketing/" class="cs-social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <Icon name="instagram-ba" class="cs-social-icon cs-default" width="12" height="12" aria-hidden="true" />
                   </a>
               </li>
               <li class="cs-social-li">
-                  <a href="" class="cs-social-link" aria-label="instagram" target="_blank" rel="noopener">
-                      <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-ba.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
-                  </a>
-              </li>
-              <li class="cs-social-li">
-                  <a href="" class="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
-                      <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/youtube-ba.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                  <a href="https://www.youtube.com/@RandR_Marketing" class="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
+                        <Icon name="youtube-ba" class="cs-social-icon cs-default" width="12" height="12" aria-hidden="true" />
                   </a>
               </li>
           </ul>

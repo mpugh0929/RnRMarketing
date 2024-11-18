@@ -1,6 +1,6 @@
 ---
 FormalName: "Social Media"
-Name: "social-media"
+Name: "social-media-marketing"
 Title1: "Build Trust Through Social Proof"
 Description1: "<p class=\"cs-text\">In restoration, showing your expertise and building trust is crucial. Our social media management helps showcase your successful projects, share customer testimonials, and demonstrate your team's professional certifications, creating a strong brand presence that resonates with property owners and insurance partners.</p>"
 Title2: "Strategic Social Media for Restoration Companies"

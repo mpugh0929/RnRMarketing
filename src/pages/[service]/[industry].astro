@@ -35,6 +35,7 @@ if (!service || !industry) {
 import { getOptimizedImage } from "@libs/utils";
 import landingImage from "@assets/images/landing/oregan.jpg";
 import ServicesDisplay from "@components/ServicesDisplay.astro";
+import Icon from "node_modules/astro-icon/components/Icon.astro";
 const optimizedImage = await getOptimizedImage(landingImage);
 ---
 
@@ -95,15 +96,15 @@ const optimizedImage = await getOptimizedImage(landingImage);
             </p>   
             <ul id="list-1405" class="cs-ul mt-3">
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">24/7 Emergency Focus:</span> Capture urgent {industry.data.Name} calls when property owners need immediate help</p>
                 </li>
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Industry Expertise:</span> Specialized {service.data.FormalName} strategies for {industry.data.Name} companies</p>
                 </li>
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Quality Lead Generation:</span> Target property owners and insurance partners, not unqualified leads</p>
                 </li>
             </ul>               
@@ -134,19 +135,19 @@ const optimizedImage = await getOptimizedImage(landingImage);
             </p>            
             <ul id="list-1405" class="cs-ul">
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Capture more emergency calls</p>
                 </li>
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Build relationships with insurance partners</p>
                 </li>
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Establish local market authority</p>
                 </li>
                 <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/black-check.svg" alt="checkmark" width="24" height="24">
+                    <Icon class="cs-icon" aria-hidden="true" name="black-check" width="24" height="24"/>
                     <p><span class="font-bold">Track and improve marketing ROI</p>
                 </li>
             </ul>
