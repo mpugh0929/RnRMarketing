@@ -1,7 +1,22 @@
 ---
-import services from '@data/serviceData.json';
+import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
+interface Props {
+  industry?: any; // If passed, we're on an industry page
+}
+
+const { industry } = Astro.props;
+
+// Get all services from the collection
+const services = await getCollection('services');
+
+// Helper function to generate the correct URL based on context
+const getServiceUrl = (serviceName: string) => {
+  return industry 
+    ? `/${serviceName}/${industry.data.Name}` 
+    : `/${serviceName}`;
+};
 ---
 
 <!-- ============================================ -->
@@ -20,32 +35,39 @@ import { Icon } from 'astro-icon/components';
             </p>
         </div>      
         <ul class="cs-card-group">            
-            {services.map(service => (
-                
-                <li class="cs-item" key={service.Name}>
-                    <a href={`/${service.Name}`} class="cs-link">
-                        <picture class="cs-picture">
-                            <Icon width="48px" height="48px" class="cs-icon" aria-hidden="true" name={`${service.IconName}`}/>
-                        </picture>
-                    </a>                    
-                    
-                    <div class="cs-text-group">
-                        <h3 class="cs-h3">
-                            <a href={`/${service.Name}`} class="cs-link">    
-                                {service.FormalName}                    
-                            </a>
-                        </h3>
-                        <p class="cs-item-text">
-                            {service.ShortDescription}   
-                        </p>
-                    </div>
-                </li>
-            ))}
+            {services.map(service => {
+                const serviceUrl = getServiceUrl(service.data.Name);
+                return (
+                    <li class="cs-item" key={service.data.Name}>
+                        <a href={serviceUrl} class="cs-link">
+                            <picture class="cs-picture">
+                                <Icon 
+                                    width="48px" 
+                                    height="48px" 
+                                    class="cs-icon" 
+                                    aria-hidden="true" 
+                                    name={service.data.IconName}
+                                />
+                            </picture>
+                        </a>                    
+                        
+                        <div class="cs-text-group">
+                            <h3 class="cs-h3">
+                                <a href={serviceUrl} class="cs-link">    
+                                    {service.data.FormalName}                    
+                                </a>
+                            </h3>
+                            <p class="cs-item-text">
+                                {service.data.ShortDescription}   
+                            </p>
+                        </div>
+                    </li>
+                );
+            })}
         </ul>
-        <a href="" class="cs-button-solid">View All Services</a>
+        <a href="/services" class="cs-button-solid">View All Services</a>
     </div>
 </section>
-
 <style lang="less">
 /*-- -------------------------- -->
 <---          Services          -->

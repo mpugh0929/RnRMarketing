@@ -1,0 +1,352 @@
+---
+import { Image } from 'astro:assets';
+import matt from "@assets/images/matt.webp";
+import city from "@assets/images/newsletter/black-city.jpeg";
+
+---
+
+<!-- ============================================ -->
+<!--                     CTA                      -->
+<!-- ============================================ -->
+
+<section id="cta-1393">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">STAY INFORMED</span>
+            <h2 class="cs-title">Get Restoration Marketing Tips & Updates</h2>
+            <p class="cs-text">
+                Join restoration company owners who receive our expert marketing insights. Get actionable tips for growing your restoration business, industry updates, and exclusive strategies for generating more emergency calls.
+            </p>
+            <form class="cs-form" name="Contact Form" method="post" netlify>
+                <input class="cs-input" type="email" id="cs-email-1393" name="find-us" placeholder="Email Address">
+                <button class="cs-button-solid cs-submit" type="submit">Subscribe Now</button>
+            </form>
+        </div>
+        <Image 
+            src={matt}
+            width="742"
+            height=742
+            alt="Matt Pugh"
+            class="cs-picture"
+            aria-hidden="true"
+        />
+        <div class="cs-bubbles" aria-hidden="true"></div>
+    </div>
+    <!--Background Image-->
+    <Image 
+        src={city}
+        width="1920"
+        height="486"
+        alt="City"
+        class="cs-background"
+        aria-hidden="true"
+    />
+</section>                                
+
+<style lang="less">
+/*-- -------------------------- -->
+<---            CTA             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    @keyframes floatAnimation {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-2rem);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes floatAnimation2 {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(3rem);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    #cta-1393 {
+        padding: var(--sectionPadding);
+        padding-bottom: 0;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        .cs-container {
+            width: 100%;
+            /* changes to 1280px at tablet */
+            max-width: (400/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 6vw, 4rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: center;
+            width: 100%;
+            max-width: (522/16rem);
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: center;
+        }
+
+        .cs-title,
+        .cs-text {
+            max-width: (500/16rem);
+            color: var(--bodyTextColorWhite);
+        }
+
+        .cs-text {
+            margin-bottom: (32/16rem);
+            opacity: 0.8;
+        }
+
+        .cs-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: (12/16rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-input {
+            font-size: (16/16rem);
+            width: 100%;
+            /* 46px - 72px */
+            height: clamp(2.875rem, 8vw, 4.5rem);
+            margin: 0;
+            padding: 0;
+            padding-left: (20/16rem);
+            border: none;
+            border-radius: (80/16rem);
+            /* prevents padding from adding to width and height */
+            box-sizing: border-box;
+            display: block;
+            &::placeholder {
+                color: #767676;
+            }
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            overflow: hidden;
+            min-width: (150/16rem);
+            padding: 0 (32/16rem);
+            background-color: var(--primary);
+            border-radius: (80/16rem);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                cursor: pointer;
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-submit {
+            width: 100%;
+            border: none;
+        }
+
+        .cs-picture {
+            width: 85%;
+            height: auto;
+            /* removes empty space between the picture and the bottom of the section */
+            margin-bottom: (-10/16rem);
+            display: block;
+            position: relative;
+            z-index: 1;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .cs-background {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .cs-bubbles {
+            /* this scales the children inside of it down. They're all in ems so they pull from the parent font size for their value of em, in this case, the value of em is tied to the viewwidth size and stops growing when the font size is equal to 1em, which it pulls from the nearst parent with a declred font size (which is the html tag, and that tag is 16px by default) */
+            font-size: ~"min(1.8vw, .65em)";
+            width: (814/16em);
+            height: (742/16em);
+            position: absolute;
+            left: 50%;
+            /* removed at larger desktop */
+            bottom: (-200/16em);
+            transform: translateX(-50%);
+
+            &:before {
+                /* white border bubble */
+                content: "";
+                width: (591/16em);
+                height: (591/16em);
+                background: transparent;
+                border: 1px solid #fff;
+                border-radius: 50%;
+                opacity: 1;
+                position: absolute;
+                display: block;
+                bottom: 0;
+                left: 0;
+                animation-name: floatAnimation;
+                animation-duration: 5s;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+            }
+
+            &:after {
+                /* orange bubble */
+                content: "";
+                width: (591/16em);
+                height: (591/16em);
+                background: var(--primary);
+                border-radius: 50%;
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -1;
+                animation-name: floatAnimation2;
+                animation-duration: 14s;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+            }
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #cta-1393 {
+        .cs-container {
+            max-width: (1280/16rem);
+        }
+
+        .cs-input {
+            width: 100%;
+        }
+
+        .cs-submit {
+            width: auto;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: (8/16rem);
+        }
+
+        .cs-picture {
+            width: 50%;
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #cta-1393 {
+        /* 100px - 130px */
+        padding: clamp(6.25rem, 7vw, 8.125rem) 1rem;
+
+        .cs-container {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .cs-content {
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .cs-picture {
+            font-size: ~"min(1vw, 1em)";
+            width: (600/16em);
+            height: (665/16em);
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            position: absolute;
+            right: (0/16em);
+            /* 106px - 240px */
+            bottom: ~"calc(clamp(6.625em, 12vw, 15em)*-1)";
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        .cs-bubbles {
+            font-size: ~"min(.9vw, 1em)";
+            left: auto;
+            /* 50px - 150px */
+            right: ~"calc(clamp(3.125em, 5vw, 9.375em)*-1)";
+            /* 106px - 368px */
+            bottom: ~"calc(clamp(10em, 20vw, 23em)*-1)";
+            transform: none;
+        }
+    }
+}                    
+</style>

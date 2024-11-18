@@ -3,10 +3,8 @@ import BaseLayout from "src/layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 import Contact from "@components/Contact.astro";
-import CSPicture from "@components/TemplateComponents/CSPicture.astro";
 import Services from "@components/ServicesDisplay.astro";
 
-import { Picture } from 'astro:assets';
 import { Image } from 'astro:assets';
 
 import { Icon } from 'astro-icon/components';
@@ -17,6 +15,7 @@ import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE AS
 import landingImageMobile from "@assets/images/hero-img-m-2.jpeg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import restorationGraphic from "@assets/images/results.jpg"
 import number1 from "@assets/images/number 1.jpeg"
+import Newsletter from "@components/Newsletter.astro";
 
 const optimizedImage = await getOptimizedImage(landingImage)
 const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
@@ -48,7 +47,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
     <div class="cs-bubbles cs-bubbles1" aria-hidden="true"></div>
     <div class="cs-bubbles cs-bubbles2" aria-hidden="true"></div>
     <!-- Background Image, background image added in the css at 1600px for parallax effect -->
-    <picture class="cs-background">
+    <picture class="cs-background" style={`--bg-image: url(${optimizedImage.src});`}>
       <source media="(max-width: 600px)" srcset={optimizedImageMobile.src}>
       <source media="(min-width: 601px)" srcset={optimizedImage.src}>
       <img decoding="async" src={optimizedImage.src} alt="web designer" width="2250" height="1500" aria-hidden="true">
@@ -122,7 +121,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
           <p class="cs-review">
               <svg class="cs-quote" preserveAspectRatio="none" viewBox="0 0 100 93" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity=".4" clip-path="url(#a)" fill="var(--quoteColor)"><path d="M22.94 84H0L18.305.854H55L22.94 84ZM67.94 84H45L63.305.854H100L67.94 84Z"/></g><defs><clipPath id="a-1658"><path fill="#fff" transform="translate(0 .854)" d="M0 0h100v83.146H0z"/></clipPath></defs></svg>
 
-              Matt and his team made my business an extremely fast and usable site. Our inbound traffic has increased and I couldn't be happier. - Jason Fogus, Contractor
+              Matt and his team completely transformed our online presence. Within days of launching our new website and campaigns, we saw an immediate increase in quality leads. Their expertise shows in everything they do, from our website's design to our targeted marketing campaigns. Best marketing investment we've made. <br /> - Jason Fogus, Owner of TRW Contracting
           </p>
       </div>
   </div>
@@ -225,9 +224,10 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
   <FAQ />  
 
   <CTA />
+  <Newsletter />
 </BaseLayout>
 
-<style lang="less">
+<style lang="less" define:vars={{ bgImage: optimizedImage.src }}>
  /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
@@ -577,7 +577,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
 @media only screen and (min-width: 100rem) {
     #hero-1349 {
         .cs-background {
-            background: url("../assets/images/hero-img.png");
+            background: url("/assets/images/hero-img.webp");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -1216,7 +1216,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
 
         .cs-flex {
             text-align: left;
-            width: 40vw;
+            width: 48vw;
             max-width: (630/16rem);
             flex: none;
             /* sends it to the right in the 2nd position */

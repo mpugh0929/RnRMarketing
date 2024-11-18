@@ -10,27 +10,48 @@
     "children": []
   },
   {
-    "key": "Projects",
-    "url": "/projects/",
+    "key": "Services",
+    "url": "/services/",
     "children": [
       {
-        "key": "Project 1",
-        "url": "/projects/project-1/"
+        "key": "Web Design",
+        "url": "/services/web-design/"
       },
       {
-        "key": "Project 2",
-        "url": "/projects/project-2/"
+        "key": "SEO",
+        "url": "/services/seo/"
+      },
+      {
+        "key": "PPC",
+        "url": "/services/ppc/"
+      },
+      {
+        "key": "Reputation Management",
+        "url": "/services/reputation-management/"
+      },
+      {
+        "key": "Social Media Marketing",
+        "url": "/services/social-media-marketing/"
+      },
+      {
+        "key": "Lead Tracking",
+        "url": "/services/lead-tracking/"
       }
     ]
   },
   {
-    "key": "Reviews",
-    "url": "/reviews/",
+    "key": "Industries",
+    "url": "/industries/",
     "children": []
   },
   {
-    "key": "Blog",
-    "url": "/blog/",
+    "key": "Resources",
+    "url": "/resources/",
+    "children": []     
+  },
+  {
+    "key": "Contact",
+    "url": "/contact/",
     "children": []     
   }
 ]

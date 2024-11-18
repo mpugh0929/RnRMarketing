@@ -18,6 +18,35 @@ const blogsCollection = defineCollection({
 		}),
 });
 
+const servicesCollection = defineCollection({
+	type: "content",
+	schema: z.object({
+	  FormalName: z.string(),
+	  Name: z.string(),
+	  Title1: z.string(),
+	  Description1: z.string(),
+	  Title2: z.string(),
+	  Description2: z.string(),
+	  ImagePath: z.string(),
+	  ImagePath2: z.string(),
+	  ShortDescription: z.string(),
+	  IconName: z.string()
+	})
+});
+
+  const industriesCollection = defineCollection({
+	type: "content",
+	schema: z.object({
+	  FormalName: z.string(),
+	  Name: z.string(),
+	  Description: z.string(),
+	  ImagePath: z.string()
+	})
+});
+
+
 export const collections = {
 	blog: blogsCollection,
+	industries: industriesCollection,
+	services: servicesCollection
 };

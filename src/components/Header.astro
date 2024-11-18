@@ -61,18 +61,21 @@ import { Image } from 'astro:assets';
           <div class="cs-ul-wrapper">
               <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
                   <li class="cs-li">
-                      <a href="/" class="cs-li-link">
+                      <a href="/" class:list={["cs-li-link", { "cs-active": "/" === Astro.url.pathname }]}>
                           Home
                       </a>
                   </li>
                   <li class="cs-li">
-                      <a href="/about" class="cs-li-link">
+                      <a href="/about" class:list={["cs-li-link", { "cs-active": Astro.url.pathname.includes("/about") }]}>
                           About
                       </a>
                   </li>
                   <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
                   <li class="cs-li cs-dropdown" tabindex="0">
-                      <span class="cs-li-link">
+                      <span class:list={[
+                        "cs-li-link",
+                        { "cs-active": Astro.url.pathname.includes("/services")},
+                      ]}>
                           Services
                           <Icon name="mdi--caret" class="cs-drop-icon" />
                       </span>
@@ -81,37 +84,37 @@ import { Image } from 'astro:assets';
                           <a href="/services" class="cs-li-link cs-drop-link">Overview</a>
                         </li>
                         <li class="cs-drop-li">
-                            <a href="/web-design" class="cs-li-link cs-drop-link">Web Design</a>
+                            <a href="/services/web-design" class="cs-li-link cs-drop-link">Web Design</a>
                         </li>
                         <li class="cs-drop-li">
-                          <a href="/seo" class="cs-li-link cs-drop-link">SEO</a>
+                          <a href="/services/seo" class="cs-li-link cs-drop-link">SEO</a>
                         </li>
                           <li class="cs-drop-li">
-                              <a href="/ppc" class="cs-li-link cs-drop-link">PPC & LSA</a>
+                              <a href="/services/ppc" class="cs-li-link cs-drop-link">PPC & LSA</a>
                           </li>
                           <li class="cs-drop-li">
-                            <a href="/social-media-marketing" class="cs-li-link cs-drop-link">Social Media Management</a>
+                            <a href="/services/social-media-marketing" class="cs-li-link cs-drop-link">Social Media Management</a>
                         </li>
                         <li class="cs-drop-li">
-                          <a href="/reputation-management" class="cs-li-link cs-drop-link">Reputation Management</a>
+                          <a href="/services/reputation-management" class="cs-li-link cs-drop-link">Reputation Management</a>
                         </li>
                         <li class="cs-drop-li">
-                          <a href="/lead-tracking" class="cs-li-link cs-drop-link">Lead Tracking</a>
+                          <a href="/services/lead-tracking" class="cs-li-link cs-drop-link">Lead Tracking</a>
                         </li>
                       </ul>
                   </li>
                   <li class="cs-li">
-                    <a href="/industries" class="cs-li-link">
+                    <a href="/industries" class:list={["cs-li-link", { "cs-active": Astro.url.pathname.includes("/industries") }]}>
                         Industries
                     </a>
                 </li>
                   <li class="cs-li">
-                      <a href="/resources" class="cs-li-link">
+                      <a href="/resources" class:list={["cs-li-link", { "cs-active": Astro.url.pathname.includes("/resources") }]}>
                           Resources
                       </a>
                   </li>
                   <li class="cs-li">
-                      <a href="/contact" class="cs-li-link">
+                      <a href="/contact" class:list={["cs-li-link", { "cs-active": Astro.url.pathname.includes("/contact") }]}>
                           Contact
                       </a>
                   </li>
