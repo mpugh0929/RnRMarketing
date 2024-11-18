@@ -13,6 +13,7 @@ import webDesignSvg from "@assets/images/svg/web-design.svg";
 // Import SVG icons from @assets/images/svg directory
 import handIcon from "@assets/images/svg/hand.svg";
 import responsiveDesignIcon from "@assets/images/svg/responsive-design.svg";
+import { Icon } from 'astro-icon/components';
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -39,15 +40,9 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
             <!-- Tablet and above Image -->
             <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-            <img
-              loading="lazy"
-              decoding="async"
-              src={webDesignSvg.src}
-              alt="web design illustration"
-              width="542"
-              height="728"
-            >
-          </picture>
+            <picture class="cs-picture">
+                <Icon  name="socialmarket-icon" width="300px" height="300px" class="mx-auto"/>
+              </picture>
         </div>
         <ul class="cs-card-group">
           <li class="cs-item">
