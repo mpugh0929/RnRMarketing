@@ -8,11 +8,9 @@ import { getOptimizedImage } from "@libs/utils";
 
 // Import images
 import landingImage from "@assets/images/landing/ocean-water.jpg";
-import webDesignSvg from "@assets/images/svg/web-design.svg";
+import socialSvg from "@assets/images/svg/social-media-marketing.svg";
 
 // Import SVG icons from @assets/images/svg directory
-import handIcon from "@assets/images/svg/hand.svg";
-import responsiveDesignIcon from "@assets/images/svg/responsive-design.svg";
 import { Icon } from 'astro-icon/components';
 
 // Optimize the landing image
@@ -35,23 +33,30 @@ const optimizedImage = await getOptimizedImage(landingImage);
     <div class="cs-container">
       <div class="cs-image-group">
         <div class="cs-flex">
-            <div class="cs-background">
-                <Icon  name="socialmarket-icon" width="300px" height="300px" class="mx-auto"/>
-            </div>
+            <picture class="cs-background">
+                <!-- Mobile Image -->
+                <source media="(max-width: 600px)" srcset={socialSvg.src}>
+                <!-- Tablet and above Image -->
+                <source media="(min-width: 601px)" srcset={socialSvg.src}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={socialSvg.src}
+                  alt="social media illustration"
+                    width="542"
+                    height="728"
+                >
+              </picture>
         </div>
         <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={handIcon.src}
-                alt="hand icon"
+                <Icon
+                name="social-proof"
                 width="32"
                 height="32"
-              >
+                class="cs-h3-icon"
+            />
               Social Proof
             </h3>
             <p class="cs-item-text">
@@ -60,90 +65,75 @@ const optimizedImage = await getOptimizedImage(landingImage);
           </li>
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={responsiveDesignIcon.src}
-                alt="responsive design icon"
-                width="32"
-                height="32"
-              >
-              Emergency Response
+                <Icon
+                    name="strategic"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
+                Strategic Social Media Presence
             </h3>
             <p class="cs-item-text">
-              Stay connected with your community during disasters through real-time updates and emergency response information. Our social media management ensures you're available 24/7 to respond to urgent restoration needs while building lasting relationships with property managers and insurance adjusters.
+                Build trust and showcase your expertise through strategic social media management. We create engaging content that highlights your successful restoration projects, shares prevention tips, and maintains active engagement with property managers and insurance partners. Our 24/7 monitoring ensures swift responses to emergency situations while building a strong, professional brand presence in your local market.
             </p>
-          </li>
+        </li>
         </ul>
       </div>
       <div class="cs-content">
-        <div class="cs-background d-lg-none d-block">
-            <Icon name="socialmarket-icon" width="300px" height="300px" class="mx-auto"/>
-        </div>
 
         <h1 class="cs-title">Social Media Marketing: Building Trust in Restoration</h1>
         <div class="intro">
             <p class="cs-text">In the restoration industry, building trust and showcasing expertise is crucial for success. Social media marketing provides a powerful platform to demonstrate your restoration capabilities, share success stories, and connect with property owners and insurance partners. Let's explore how strategic social media management can drive growth for your restoration company.</p>
         </div>
 
-  <div class="cs-image-group d-lg-none d-block">
-    <div class="cs-flex">
-      <picture class="cs-background">
-        <!-- Mobile Image -->
-        <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
-        <!-- Tablet and above Image -->
-        <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-        <img
-          loading="lazy"
-          decoding="async"
-          src={webDesignSvg.src}
-          alt="web design illustration"
-          width="542"
-          height="728"
-        >
-      </picture>
-    </div>
-    <ul class="cs-card-group mt-3">
-      <li class="cs-item">
-        <h3 class="cs-h3">
-          <img
-            class="cs-h3-icon"
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-            src={handIcon.src}
-            alt="hand icon"
-            width="32"
-            height="32"
-          >
-          Social Proof
-        </h3>
-        <p class="cs-item-text">
-          Build trust by showcasing your restoration expertise through before/after photos, customer testimonials, and project highlights. Our social media strategies help demonstrate your professional certifications and emergency response capabilities to property owners and insurance partners.
-        </p>
-      </li>
-      <li class="cs-item">
-        <h3 class="cs-h3">
-          <img
-            class="cs-h3-icon"
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-            src={responsiveDesignIcon.src}
-            alt="responsive design icon"
-            width="32"
-            height="32"
-          >
-          Emergency Response
-        </h3>
-        <p class="cs-item-text">
-          Stay connected with your community during disasters through real-time updates and emergency response information. Our social media management ensures you're available 24/7 to respond to urgent restoration needs while building lasting relationships with property managers and insurance adjusters.
-        </p>
-      </li>
-    </ul>
-  </div>
+        <div class="cs-image-group d-lg-none d-block">
+            <div class="cs-flex">
+                <picture class="cs-background">
+                    <!-- Mobile Image -->
+                    <source media="(max-width: 600px)" srcset={socialSvg.src}>
+                    <!-- Tablet and above Image -->
+                    <source media="(min-width: 601px)" srcset={socialSvg.src}>
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src={socialSvg.src}
+                      alt="social media illustration"
+                        width="542"
+                        height="728"
+                    >
+                  </picture>
+            </div>
+            <ul class="cs-card-group mt-3">
+                <li class="cs-item">
+                    <h3 class="cs-h3">
+                        <Icon
+                            name="social-proof"
+                            width="32"
+                            height="32"
+                            class="cs-h3-icon"
+                        />
+                    Social Proof
+                    </h3>
+                    <p class="cs-item-text">
+                    Build trust by showcasing your restoration expertise through before/after photos, customer testimonials, and project highlights. Our social media strategies help demonstrate your professional certifications and emergency response capabilities to property owners and insurance partners.
+                    </p>
+                </li>
+                <li class="cs-item">
+                    <h3 class="cs-h3">
+                        <Icon
+                            name="strategic"
+                            width="32"
+                            height="32"
+                            class="cs-h3-icon"
+                        />
+                        Strategic Social Media Presence
+                    </h3>
+                    <p class="cs-item-text">
+                        Build trust and showcase your expertise through strategic social media management. We create engaging content that highlights your successful restoration projects, shares prevention tips, and maintains active engagement with property managers and insurance partners. Our 24/7 monitoring ensures swift responses to emergency situations while building a strong, professional brand presence in your local market.
+                    </p>
+                </li>
+            </ul>
+        </div>
 
   <h3>The Power of Visual Content</h2>
   <p class="cs-text">Social media offers unique advantages for restoration companies:</p>

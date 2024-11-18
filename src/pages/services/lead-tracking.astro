@@ -8,11 +8,10 @@ import { getOptimizedImage } from "@libs/utils";
 
 // Import images
 import landingImage from "@assets/images/landing/ocean-water.jpg";
-import webDesignSvg from "@assets/images/svg/web-design.svg";
+import leadSvg from "@assets/images/svg/lead-tracking.svg";
 
 // Import SVG icons from @assets/images/svg directory
-import handIcon from "@assets/images/svg/hand.svg";
-import responsiveDesignIcon from "@assets/images/svg/responsive-design.svg";
+import { Icon } from "astro-icon/components";
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -34,32 +33,28 @@ preloadedImage={optimizedImage} >
         <div class="cs-flex">
           <picture class="cs-background">
             <!-- Mobile Image -->
-            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
+            <source media="(max-width: 600px)" srcset={leadSvg.src}>
             <!-- Tablet and above Image -->
-            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
+            <source media="(min-width: 601px)" srcset={leadSvg.src}>
             <img
               loading="lazy"
               decoding="async"
-              src={webDesignSvg.src}
-              alt="analytics illustration"
-              width="542"
-              height="728"
+              src={leadSvg.src}
+              alt="lead tracking illustration"
+                    width="542"
+                    height="728"
             >
           </picture>
         </div>
         <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={handIcon.src}
-                alt="hand icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="lead-visibility"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Complete Lead Visibility
             </h3>
             <p class="cs-item-text">
@@ -68,16 +63,12 @@ preloadedImage={optimizedImage} >
           </li>
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={responsiveDesignIcon.src}
-                alt="responsive design icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="performance-optimization"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Performance Optimization
             </h3>
             <p class="cs-item-text">
@@ -87,37 +78,35 @@ preloadedImage={optimizedImage} >
         </ul>
       </div>
       <div class="cs-content">
-        <picture class="cs-background d-block d-lg-none">
-            <!-- Mobile Image -->
-            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
-            <!-- Tablet and above Image -->
-            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-            <img
-              loading="lazy"
-              decoding="async"
-              src={webDesignSvg.src}
-              alt="analytics illustration"
-              width="542"
-              height="728"
-            >
-          </picture>
         <h1 class="cs-title">Lead Tracking & Analytics: Maximizing Your Marketing ROI</h1>
         <div class="intro">
           <p class="cs-text">In the restoration industry, understanding which marketing channels drive your best leads is crucial for growth. Our advanced lead tracking and analytics system provides complete visibility into your marketing performance, helping you optimize campaigns and maximize ROI. Let's explore how comprehensive tracking can transform your restoration marketing efforts.</p>
         </div>        
         <ul class="cs-card-group d-block d-lg-none">
+            <div class="cs-flex">
+                <picture class="cs-background">
+                    <!-- Mobile Image -->
+                    <source media="(max-width: 600px)" srcset={leadSvg.src}>
+                    <!-- Tablet and above Image -->
+                    <source media="(min-width: 601px)" srcset={leadSvg.src}>
+                    <img
+                    loading="lazy"
+                    decoding="async"
+                    src={leadSvg.src}
+                    alt="lead tracking illustration"
+                            width="542"
+                            height="728"
+                    >
+                </picture>
+            </div>
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={handIcon.src}
-                alt="hand icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="lead-visibility"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Complete Lead Visibility
             </h3>
             <p class="cs-item-text">
@@ -126,16 +115,12 @@ preloadedImage={optimizedImage} >
           </li>
           <li class="cs-item mt-3">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={responsiveDesignIcon.src}
-                alt="responsive design icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="performance-optimization"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Performance Optimization
             </h3>
             <p class="cs-item-text">

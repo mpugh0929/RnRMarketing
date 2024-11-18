@@ -8,7 +8,7 @@ import { getOptimizedImage } from "@libs/utils";
 
 // Import images
 import landingImage from "@assets/images/landing/ocean-water.jpg";
-import webDesignSvg from "@assets/images/svg/web-design.svg";
+import repSvg from "@assets/images/svg/reputation-management.svg";
 
 // Import SVG icons from @assets/images/svg directory
 import handIcon from "@assets/images/svg/hand.svg";
@@ -35,29 +35,30 @@ const optimizedImage = await getOptimizedImage(landingImage);
     <div class="cs-container">
       <div class="cs-image-group">
         <div class="cs-flex">
-          <picture class="cs-background">
-            <!-- Mobile Image -->
-            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
-            <!-- Tablet and above Image -->
-            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-            <picture class="cs-picture">
-                <Icon  name="trust" width="300px" height="300px" class="mx-auto"/>
-              </picture>
-          </picture>
+            <picture class="cs-background d-lg-block d-none">
+                <!-- Mobile Image -->
+                <source media="(max-width: 600px)" srcset={repSvg.src}>
+                <!-- Tablet and above Image -->
+                <source media="(min-width: 601px)" srcset={repSvg.src}>
+                <img
+                    loading="lazy"
+                    decoding="async"
+                    src={repSvg.src}
+                    alt="reputation management illustration"
+                        width="542"
+                        height="728"
+                >
+            </picture>
         </div>
         <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={handIcon.src}
-                alt="hand icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="review"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Review Management
             </h3>
             <p class="cs-item-text">
@@ -66,16 +67,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
           </li>
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={responsiveDesignIcon.src}
-                alt="responsive design icon"
-                width="32"
-                height="32"
-              >
+                <Icon
+                    name="monitoring"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Brand Monitoring
             </h3>
             <p class="cs-item-text">
@@ -85,15 +82,6 @@ const optimizedImage = await getOptimizedImage(landingImage);
         </ul>
       </div>
       <div class="cs-content">
-        <picture class="cs-background d-lg-none d-block">
-            <!-- Mobile Image -->
-            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
-            <!-- Tablet and above Image -->
-            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-            <picture class="cs-picture">
-                <Icon  name="trust" width="300px" height="300px" class="mx-auto"/>
-              </picture>
-          </picture>
         <h1 class="cs-title">Reputation Management: Building Trust in Restoration</h1>
 
         <div class="intro">
@@ -104,13 +92,13 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <div class="cs-flex">
               <picture class="cs-background">
                 <!-- Mobile Image -->
-                <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
+                <source media="(max-width: 600px)" srcset={repSvg.src}>
                 <!-- Tablet and above Image -->
-                <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
+                <source media="(min-width: 601px)" srcset={repSvg.src}>
                 <img
                   loading="lazy"
                   decoding="async"
-                  src={webDesignSvg.src}
+                  src={repSvg.src}
                   alt="reputation management illustration"
                   width="542"
                   height="728"
@@ -120,16 +108,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <ul class="cs-card-group mt-3">
               <li class="cs-item">
                 <h3 class="cs-h3">
-                  <img
-                    class="cs-h3-icon"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src={handIcon.src}
-                    alt="hand icon"
-                    width="32"
-                    height="32"
-                  >
+                    <Icon
+                        name="review"
+                        width="32"
+                        height="32"
+                        class="cs-h3-icon"
+                    />
                   Review Management
                 </h3>
                 <p class="cs-item-text">
@@ -138,16 +122,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
               </li>
               <li class="cs-item">
                 <h3 class="cs-h3">
-                  <img
-                    class="cs-h3-icon"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src={responsiveDesignIcon.src}
-                    alt="responsive design icon"
+                    <Icon
+                    name="monitoring"
                     width="32"
                     height="32"
-                  >
+                    class="cs-h3-icon"
+                />
                   Brand Monitoring
                 </h3>
                 <p class="cs-item-text">

@@ -52,16 +52,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
         <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
-              <img
-                class="cs-h3-icon"
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                src={handIcon.src}
-                alt="hand icon"
+              <Icon
+                name="sos"
                 width="32"
                 height="32"
-              >
+                class="cs-h3-icon"
+            />
               Emergency Response
             </h3>
             <p class="cs-item-text">
@@ -89,20 +85,6 @@ const optimizedImage = await getOptimizedImage(landingImage);
         </ul>
       </div>
       <div class="cs-content">
-        <picture class="cs-background d-lg-none d-block">
-            <!-- Mobile Image -->
-            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
-            <!-- Tablet and above Image -->
-            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
-            <img
-              loading="lazy"
-              decoding="async"
-              src={webDesignSvg.src}
-              alt="web design illustration"
-              width="542"
-              height="728"
-            >
-          </picture>
         <h1 class="cs-title">Restoration Web Design: Converting Emergency Calls 24/7</h1>
 
         <div class="intro">
@@ -129,16 +111,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
             <ul class="cs-card-group">
               <li class="cs-item">
                 <h3 class="cs-h3">
-                  <img
-                    class="cs-h3-icon"
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                    src={handIcon.src}
-                    alt="hand icon"
+                  <Icon
+                    name="sos"
                     width="32"
                     height="32"
-                  >
+                    class="cs-h3-icon"
+                  />
                   Emergency Response
                 </h3>
                 <p class="cs-item-text">

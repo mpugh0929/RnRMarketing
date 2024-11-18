@@ -12,6 +12,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 import ppcIllustration from "@assets/images/svg/ppc.svg";
 import trustIcon from "@assets/images/svg/trust.svg";
 import evaluationIcon from "@assets/images/svg/evaluation.svg";
+import { Icon } from "astro-icon/components";
 
 
 ---
@@ -42,7 +43,12 @@ import evaluationIcon from "@assets/images/svg/evaluation.svg";
             <ul class="cs-card-group">
                 <li class="cs-item">
                     <h3 class="cs-h3">
-                        <img class="cs-h3-icon" aria-hidden="true" loading="lazy" decoding="async" src={trustIcon.src} alt="icon" width="32" height="32">
+                        <Icon
+                            name="sos-ppc"
+                            width="32"
+                            height="32"
+                            class="cs-h3-icon"
+                        />
                         Emergency Response
                     </h3>
                     <p class="cs-item-text cs-text">
@@ -51,7 +57,12 @@ import evaluationIcon from "@assets/images/svg/evaluation.svg";
                 </li>
                 <li class="cs-item">
                     <h3 class="cs-h3">
-                        <img class="cs-h3-icon" aria-hidden="true" loading="lazy" decoding="async" src={evaluationIcon.src} alt="icon" width="32" height="32">
+                        <Icon
+                            name="guarentee"
+                            width="32"
+                            height="32"
+                            class="cs-h3-icon"
+                        />
                         Google Guaranteed
                     </h3>
                     <p class="cs-item-text cs-text">
@@ -61,51 +72,52 @@ import evaluationIcon from "@assets/images/svg/evaluation.svg";
             </ul>
         </div>
         <div class="cs-content">
-            <picture class="cs-background d-lg-none d-block">
-                <!--Mobile Image-->
-                <source media="(max-width: 600px)" srcset={ppcIllustration.src}>
-                <!--Tablet and above Image-->
-                <source media="(min-width: 601px)" srcset={ppcIllustration.src}>
-                <img loading="lazy" decoding="async" src={ppcIllustration.src} alt="ppc illustration" width="542" height="728">
-            </picture>
             <h1 class="cs-title">PPC and Local Service Ads: Capturing Emergency Restoration Leads</h1>
 
             <div class="intro">
                 <p class="cs-text">In the restoration industry, being found quickly during emergencies is crucial for success. Pay-Per-Click (PPC) advertising and Local Service Ads (LSA) provide powerful tools for restoration companies to capture urgent leads, build trust with property owners, and grow their business through strategic digital advertising.</p>
             </div>
 
-            <div class="cs-image-group d-lg-none d-block">
-                <div class="cs-image-group">
-                    <div class="cs-flex">
-                        <picture class="cs-background">
-                            <!--Mobile Image-->
-                            <source media="(max-width: 600px)" srcset={ppcIllustration.src}>
-                            <!--Tablet and above Image-->
-                            <source media="(min-width: 601px)" srcset={ppcIllustration.src}>
-                            <img loading="lazy" decoding="async" src={ppcIllustration.src} alt="ppc illustration" width="542" height="728">
-                        </picture>
-                    </div>
-                    <ul class="cs-card-group">
-                        <li class="cs-item">
-                            <h3 class="cs-h3">
-                                <img class="cs-h3-icon" aria-hidden="true" loading="lazy" decoding="async" src={trustIcon.src} alt="icon" width="32" height="32">
-                                Emergency Response
-                            </h3>
-                            <p class="cs-item-text cs-text">
-                                Capture urgent restoration leads with strategic PPC campaigns that activate during disasters. Our weather-triggered ads and emergency-focused campaigns ensure your restoration company appears when property owners need immediate help.
-                            </p>
-                        </li>
-                        <li class="cs-item">
-                            <h3 class="cs-h3">
-                                <img class="cs-h3-icon" aria-hidden="true" loading="lazy" decoding="async" src={evaluationIcon.src} alt="icon" width="32" height="32">
-                                Google Guaranteed
-                            </h3>
-                            <p class="cs-item-text cs-text">
-                                Build instant trust with Local Service Ads featuring the Google Guaranteed badge. Appear at the top of search results for restoration services, capturing high-intent leads while demonstrating your company's reliability.
-                            </p>
-                        </li>
-                    </ul>
+            <div class="cs-image-group d-block d-lg-none">
+                <div class="cs-flex">
+                    <picture class="cs-background">
+                        <!--Mobile Image-->
+                        <source media="(max-width: 600px)" srcset={ppcIllustration.src}>
+                        <!--Tablet and above Image-->
+                        <source media="(min-width: 601px)" srcset={ppcIllustration.src}>
+                        <img loading="lazy" decoding="async" src={ppcIllustration.src} alt="ppc illustration" width="542" height="728">
+                    </picture>
                 </div>
+                <ul class="cs-card-group">
+                    <li class="cs-item">
+                        <h3 class="cs-h3">
+                            <Icon
+                                name="sos-ppc"
+                                width="32"
+                                height="32"
+                                class="cs-h3-icon"
+                            />
+                            Emergency Response
+                        </h3>
+                        <p class="cs-item-text cs-text">
+                            Capture urgent restoration leads with strategic PPC campaigns that activate during disasters. Our weather-triggered ads and emergency-focused campaigns ensure your restoration company appears when property owners need immediate help.
+                        </p>
+                    </li>
+                    <li class="cs-item">
+                        <h3 class="cs-h3">
+                            <Icon
+                                name="guarentee"
+                                width="32"
+                                height="32"
+                                class="cs-h3-icon"
+                            />
+                            Google Guaranteed
+                        </h3>
+                        <p class="cs-item-text cs-text">
+                            Build instant trust with Local Service Ads featuring the Google Guaranteed badge. Appear at the top of search results for restoration services, capturing high-intent leads while demonstrating your company's reliability.
+                        </p>
+                    </li>
+                </ul>
             </div>
 
             <h2>Emergency Response PPC Strategies</h2>
