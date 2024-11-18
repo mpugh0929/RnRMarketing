@@ -89,13 +89,27 @@ const optimizedImage = await getOptimizedImage(landingImage);
         </ul>
       </div>
       <div class="cs-content">
+        <picture class="cs-background d-lg-none d-block">
+            <!-- Mobile Image -->
+            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
+            <!-- Tablet and above Image -->
+            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
+            <img
+              loading="lazy"
+              decoding="async"
+              src={webDesignSvg.src}
+              alt="web design illustration"
+              width="542"
+              height="728"
+            >
+          </picture>
         <h1 class="cs-title">Restoration Web Design: Converting Emergency Calls 24/7</h1>
 
         <div class="intro">
           <p class="cs-text">In the restoration industry, your website needs to do more than look good—it needs to convert emergency calls into jobs while building trust with property owners and insurance partners. Our custom restoration websites combine emergency response features with professional design to help you capture more leads and grow your restoration company.</p>
         </div>
 
-        <div class="cs-image-group d-none d-lg-block">
+        <div class="cs-image-group d-lg-none d-block">
             <div class="cs-flex">
               <picture class="cs-background">
                 <!-- Mobile Image -->

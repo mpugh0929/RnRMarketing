@@ -85,6 +85,15 @@ const optimizedImage = await getOptimizedImage(landingImage);
         </ul>
       </div>
       <div class="cs-content">
+        <picture class="cs-background d-lg-none d-block">
+            <!-- Mobile Image -->
+            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
+            <!-- Tablet and above Image -->
+            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
+            <picture class="cs-picture">
+                <Icon  name="trust" width="300px" height="300px" class="mx-auto"/>
+              </picture>
+          </picture>
         <h1 class="cs-title">Reputation Management: Building Trust in Restoration</h1>
 
         <div class="intro">

@@ -47,7 +47,7 @@ preloadedImage={optimizedImage} >
             >
           </picture>
         </div>
-        <ul class="cs-card-group d-none d-lg-block">
+        <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
               <img
@@ -87,10 +87,24 @@ preloadedImage={optimizedImage} >
         </ul>
       </div>
       <div class="cs-content">
+        <picture class="cs-background d-block d-lg-none">
+            <!-- Mobile Image -->
+            <source media="(max-width: 600px)" srcset={webDesignSvg.src}>
+            <!-- Tablet and above Image -->
+            <source media="(min-width: 601px)" srcset={webDesignSvg.src}>
+            <img
+              loading="lazy"
+              decoding="async"
+              src={webDesignSvg.src}
+              alt="analytics illustration"
+              width="542"
+              height="728"
+            >
+          </picture>
         <h1 class="cs-title">Lead Tracking & Analytics: Maximizing Your Marketing ROI</h1>
         <div class="intro">
           <p class="cs-text">In the restoration industry, understanding which marketing channels drive your best leads is crucial for growth. Our advanced lead tracking and analytics system provides complete visibility into your marketing performance, helping you optimize campaigns and maximize ROI. Let's explore how comprehensive tracking can transform your restoration marketing efforts.</p>
-        </div>
+        </div>        
         <ul class="cs-card-group d-block d-lg-none">
           <li class="cs-item">
             <h3 class="cs-h3">
@@ -110,7 +124,7 @@ preloadedImage={optimizedImage} >
               Track every lead source, call, form submission, and chat interaction across your marketing channels. Our comprehensive analytics dashboard shows you exactly which campaigns are delivering your highest-value restoration jobs and best ROI.
             </p>
           </li>
-          <li class="cs-item">
+          <li class="cs-item mt-3">
             <h3 class="cs-h3">
               <img
                 class="cs-h3-icon"
