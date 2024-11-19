@@ -8,5 +8,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), tailwind(), sitemap()]
+  site: 'https://remediationrestorationmarketing.com',
+  integrations: [icon(), tailwind(), sitemap()],
 });
