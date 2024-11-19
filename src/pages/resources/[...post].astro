@@ -9,7 +9,7 @@ import "@styles/blog.less";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing/hawaii.jpg";
 const optimizedImage = await getOptimizedImage(landingImage)
 
 export async function getStaticPaths() {
@@ -32,7 +32,7 @@ const { Content } = await post.render();
 >
 
   <Landing 
-    title="Blog"
+    title="Article"
     image={optimizedImage}
   />
 
@@ -66,8 +66,8 @@ const { Content } = await post.render();
             <!--Author Image-->
             <picture class="blog-author-img">
               <img
-                src="/assets/svgs/profile.svg"
-                alt="house"
+                src="/assets/images/matt profile.webp"
+                alt="matt pugh"
                 width="32"
                 height="32"
                 decoding="async"
