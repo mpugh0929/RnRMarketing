@@ -14,18 +14,18 @@ export async function getStaticPaths() {
   return services.flatMap(service =>
     industries.map(industry => ({
       params: { 
-        service: service.data.Name, 
-        industry: industry.data.Name 
+        industry: industry.data.Name,
+        service: service.data.Name
       },
       props: { 
-        service: service,
-        industry: industry
+        industry: industry,
+        service: service
       }
     }))
   );
 }
 
-const { service, industry } = Astro.props;
+const { industry, service } = Astro.props;
 
 if (!service || !industry) {
   throw new Error(`Service or industry not found: ${Astro.params.service} ${Astro.params.industry}`);
@@ -47,6 +47,7 @@ const optimizedImage = await getOptimizedImage(landingImage);
 <Landing 
     title={`${service.data.FormalName} for ${industry.data.FormalName}`}
     image={optimizedImage}
+    isIndustryByService="true"
 />
 
 <!-- Primary Service Section -->

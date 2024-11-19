@@ -1,15 +1,54 @@
 ---
 import Picture from "astro/components/Picture.astro"
-const { title, image } = Astro.props
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import { Icon } from "astro-icon/components";
----
 
+interface Props {
+  title: string;
+  image: {
+    src: string;
+    attributes: {
+      width: number;
+      height: number;
+    }
+  };
+  isIndustryByService?: boolean;
+}
+
+const { title, image, isIndustryByService } = Astro.props;
+
+// Get current path segments
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+
+// Function to format breadcrumb text
+const formatBreadcrumbText = (text: string) => {
+  return text
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+// Only create custom crumbs for service by industry pages
+const customCrumbs = isIndustryByService && pathSegments.length >= 2 ? [
+  {
+    text: "Home",
+    href: "/",
+  },
+  {
+    text: formatBreadcrumbText(pathSegments[0]),
+    href: `/industries/${pathSegments[0]}`,
+  },
+  {
+    text: formatBreadcrumbText(pathSegments[1]),
+    href: `/${pathSegments[0]}/${pathSegments[1]}`,
+  }
+] : undefined;
+---
 <section id="int-hero">
 <h1 id="home-h">{title}</h1>
 <div class="margin-bread">
-<Breadcrumbs linkTextFormat="capitalized" id="my-breadcrumbs"> 
+<Breadcrumbs linkTextFormat="capitalized" id="my-breadcrumbs" crumbs={isIndustryByService ? customCrumbs : undefined}> 
     <Icon height="10" width="10" name="chevron-right" slot="separator"/>
 </Breadcrumbs>
 </div>
