@@ -39,7 +39,7 @@ const getServiceUrl = (serviceName: string) => {
                 const serviceUrl = getServiceUrl(service.data.Name);
                 return (
                     <li class="cs-item" key={service.data.Name}>
-                        <a href={serviceUrl} class="cs-link">
+                        <a href={serviceUrl} class="cs-link" aria-label={service.data.FormalName}>
                             <picture class="cs-picture">
                                 <Icon 
                                     width="48px" 
@@ -53,7 +53,7 @@ const getServiceUrl = (serviceName: string) => {
                         
                         <div class="cs-text-group">
                             <h3 class="cs-h3">
-                                <a href={serviceUrl} class="cs-link">    
+                                <a href={serviceUrl} class="cs-link" aria-label={service.data.FormalName}>    
                                     {service.data.FormalName}                    
                                 </a>
                             </h3>
