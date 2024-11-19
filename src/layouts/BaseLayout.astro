@@ -69,6 +69,54 @@ const { description, title, preloadedImage } = Astro.props;
                 }
             </script>
 
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What type of leads can I expect from your marketing?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We focus on generating high-value commercial and residential restoration leads including water damage, fire restoration, and mold remediation. We specifically target property owners and managers - not renters who can't authorize work."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How quickly can I expect to see results?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Most clients start seeing qualified leads within 72 hours of launching paid campaigns. For organic growth (SEO), you'll typically see significant improvements within 2-3 months. During your discovery call, we'll analyze your market and provide a detailed timeline based on your specific situation and goals."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What makes you different from other marketing agencies?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We exclusively serve the restoration industry - it's all we do. Our team understands the unique challenges of restoration marketing, from emergency service messaging to insurance work requirements. We've developed proven strategies specifically for restoration companies, including targeting decision-makers, optimizing for emergency searches, and highlighting insurance/certification credentials."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What's included in your marketing services?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Our comprehensive service includes 24/7 emergency PPC campaigns, local SEO optimization, review management, website optimization for conversions, and detailed performance tracking. Everything is handled in-house by our USA-based team who understands the restoration industry. You'll receive regular reports showing exactly how your marketing budget is performing."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Do you require long-term contracts?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We believe in earning your business every month. While we require a minimum 3-month commitment to see optimal results (especially for SEO), we don't lock you into lengthy contracts."
+                            }
+                        }
+                        ]
+                    }
+                </script>
             <!-- Preloads the image passed as a prop -->
             <link rel="preload" href={preloadedImage.src} as="image" />
 
