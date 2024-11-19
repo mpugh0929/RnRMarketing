@@ -10,4 +10,5 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://remediationrestorationmarketing.com',
   integrations: [icon(), tailwind(), sitemap()],
+  trailingSlash: "always",
 });
