@@ -1,10 +1,18 @@
 ---
 import Picture from "astro/components/Picture.astro"
 const { title, image } = Astro.props
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="int-hero">
 <h1 id="home-h">{title}</h1>
+<div class="margin-bread">
+<Breadcrumbs linkTextFormat="capitalized" id="my-breadcrumbs"> 
+    <Icon height="10" width="10" name="chevron-right" slot="separator"/>
+</Breadcrumbs>
+</div>
 
 <!-- standard <picture> attributes are supported. Set loading to lazy for assets below the fold -->
  <!-- Note: because we use the getImage function to generate an optimized image, we need to use special properties. More info on [the getImage() page](https://docs.astro.build/en/guides/images/#generating-images-with-getimage) -->
@@ -30,6 +38,13 @@ const { title, image } = Astro.props
     
     /* Mobile */
     @media only screen and (min-width: 0em) {
+        #my-breadcrumbs li{
+            color: #fff !important;
+        }
+        .margin-bread {
+            margin-bottom: 5rem;
+            margin-top: 1rem;
+        }
         #int-hero {
             min-height: 30vh;
             padding-top: (50/4rem);
@@ -78,7 +93,6 @@ const { title, image } = Astro.props
                 max-width: (500/16rem);
                 margin: 0 auto;
                 margin-top: (16/16rem);
-                margin-bottom: 5rem;
                 color: #fff;
                 position: relative;
             }
@@ -108,6 +122,9 @@ const { title, image } = Astro.props
         h1 {
             margin-top: (160/16rem) !important;
             margin-bottom: 1rem !important;
+        }
+        .margin-bread {
+            margin-bottom: 0rem;
         }
     }
 </style>

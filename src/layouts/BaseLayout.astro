@@ -33,6 +33,7 @@ const { description, title, preloadedImage } = Astro.props;
                     "@id": "",
                     "url": "https://remediationrestorationmarketing.com",
                     "telephone": "17174201766",
+                    "priceRange": "$$",
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": "1000 Carlisle St, STE 1625, Room 2",
@@ -48,24 +49,72 @@ const { description, title, preloadedImage } = Astro.props;
                         "https://remediationrestorationmarketing.com"
                     ],
                     "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 39.8172159,
-                    "longitude": -76.99499730000001
+                        "@type": "GeoCoordinates",
+                        "latitude": 39.8172159,
+                        "longitude": -76.99499730000001
                     },
                     "openingHoursSpecification": {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": [
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday"
-                    ],
-                    "opens": "09:00",
-                    "closes": "10:00",
-                    } 
-
-                    
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": [
+                            "Monday",
+                            "Tuesday",
+                            "Wednesday",
+                            "Thursday",
+                            "Friday"
+                        ],
+                        "opens": "09:00",
+                        "closes": "10:00"
+                    },
+                    "offers": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Web Design for Restoration Companies",
+                                "description": "Professional, fast-loading websites optimized for emergency response and lead generation, featuring emergency contact forms, service area maps, before/after galleries, and certification displays. Mobile-first approach ensures property owners can easily contact you during disasters."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Restoration SEO Services",
+                                "description": "Restoration-focused SEO strategies helping companies dominate local searches for water damage, fire restoration, mold remediation, and other essential services. Includes targeted local SEO, strategic content creation, and technical optimization."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "PPC & LSA Campaign Management",
+                                "description": "Targeted PPC and Local Service Ads campaigns for emergency restoration services, featuring weather-triggered ads, location-specific targeting, and insurance-focused campaigns. Optimized for cost-effective lead generation and maximum ROI."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Social Media Management",
+                                "description": "Strategic social media management showcasing restoration expertise through successful projects, customer testimonials, and professional certifications. Focused on building trust with property owners and insurance partners."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Reputation Management",
+                                "description": "Comprehensive reputation management services including automated review collection, online mention monitoring, and testimonial showcase. Helps maintain strong ratings across Google, Facebook, and industry-specific platforms."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Lead Tracking & Analytics",
+                                "description": "Advanced tracking system monitoring calls, form submissions, and chat interactions with detailed insights on lead quality, conversion rates, and cost per acquisition. Includes comprehensive analytics dashboard with real-time performance visibility."
+                            }
+                        }
+                    ]
                 }
             </script>
 
@@ -116,6 +165,42 @@ const { description, title, preloadedImage } = Astro.props;
                         }
                         ]
                     }
+                </script>
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Remediation & Restoration Marketing",
+                    "url": "https://remediationrestorationmarketing.com",
+                    "logo": "https://remediationrestorationmarketing.com/assets/images/logo-small.jpg",
+                    "image": "https://remediationrestorationmarketing.com/assets/images/logo-small.jpg",
+                    "description": "Specialized marketing agency helping restoration companies generate more emergency service leads through SEO, PPC, web design, and digital marketing.",
+                    "areaServed": {
+                    "@type": "Country",
+                    "name": "United States"
+                    },
+                    "brand": {
+                    "@type": "Brand",
+                    "name": "Remediation & Restoration Marketing",
+                    "slogan": "Marketing Solutions for Restoration Companies"
+                    },
+                    "knowsAbout": [
+                    "Water Damage Restoration Marketing",
+                    "Fire Damage Restoration Marketing",
+                    "Mold Remediation Marketing",
+                    "Commercial Restoration Marketing",
+                    "Sewage Cleanup Marketing",
+                    "Biohazard Cleanup Restoration",
+                    "Roof Damage Restoration Restoration"
+                    ],
+                    "foundingDate": "2024",
+                    "founders": [
+                    {
+                        "@type": "Person",
+                        "name": "Matt Pugh" 
+                    }
+                    ]
+                }
                 </script>
             <!-- Preloads the image passed as a prop -->
             <link rel="preload" href={preloadedImage.src} as="image" />
