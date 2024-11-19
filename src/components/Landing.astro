@@ -37,11 +37,11 @@ const customCrumbs = isIndustryByService && pathSegments.length >= 2 ? [
   },
   {
     text: formatBreadcrumbText(pathSegments[0]),
-    href: `/industries/${pathSegments[0]}`,
+    href: `/industries/${pathSegments[0]}/`,
   },
   {
     text: formatBreadcrumbText(pathSegments[1]),
-    href: `/${pathSegments[0]}/${pathSegments[1]}`,
+    href: `/${pathSegments[0]}/${pathSegments[1]}/`,
   }
 ] : undefined;
 ---
