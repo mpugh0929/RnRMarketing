@@ -11,8 +11,6 @@ tags:
   - post
   - featured
 ---
-# 10 Powerful Restoration Marketing Strategies to Boost Your Business
-
 ## Key Takeaways
 
 * Do [local SEO](https://remediationrestorationmarketing.com/services/seo/) to ensure you appear in local searches and attract more local shoppers.
