@@ -22,7 +22,7 @@ const recentPosts = posts.slice(0, 3);
       <ul class="cs-card-group">
         {recentPosts.map((post) => (
             <li class="cs-item">
-                <a href={`/resources/${post.slug}`} class="cs-link">
+                <a href={`/resources/${post.slug}/`} class="cs-link">
                   <picture class="cs-picture" aria-hidden="true">
                     <source media="(max-width: 600px)" srcset={post.data.image.src}>
                     <source media="(min-width: 601px)" srcset={post.data.image.src}>

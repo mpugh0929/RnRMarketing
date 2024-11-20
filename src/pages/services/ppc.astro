@@ -11,6 +11,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
 // Import images
 import ppcIllustration from "@assets/images/svg/ppc.svg";
 import { Icon } from "astro-icon/components";
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 
 ---
@@ -42,7 +45,7 @@ import { Icon } from "astro-icon/components";
                 <li class="cs-item">
                     <h3 class="cs-h3">
                         <Icon
-                            name="sos-ppc"
+                            name="alert"
                             width="32"
                             height="32"
                             class="cs-h3-icon"
@@ -212,7 +215,10 @@ import { Icon } from "astro-icon/components";
     <div class="cs-bubbles" aria-hidden="true"></div>
 </section>
 
-<Articles />
+    <FAQ />  
+    <CTA />
+    <Articles />
+    <Newsletter />
 
 </BaseLayout>
 <style lang="less">
@@ -648,6 +654,9 @@ import { Icon } from "astro-icon/components";
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 400px;
     }
 }
 

@@ -15,7 +15,7 @@ const services = await getCollection('services');
 const getServiceUrl = (serviceName: string) => {
   return industry 
     ? `/${industry.data.Name}/${serviceName}/` 
-    : `/services/${serviceName}`;
+    : `/services/${serviceName}/`;
 };
 ---
 

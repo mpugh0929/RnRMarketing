@@ -12,6 +12,9 @@ import socialSvg from "@assets/images/svg/social-media-marketing.svg";
 
 // Import SVG icons from @assets/images/svg directory
 import { Icon } from 'astro-icon/components';
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -189,9 +192,11 @@ const optimizedImage = await getOptimizedImage(landingImage);
 </div>
 </div>
 <div class="cs-bubbles" aria-hidden="true"></div>
-  </section>
-
-  <Articles />
+</section>
+    <FAQ />  
+    <CTA />
+    <Articles />
+    <Newsletter />
 </BaseLayout>
 
 <style lang="less">
@@ -627,6 +632,9 @@ const optimizedImage = await getOptimizedImage(landingImage);
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 370px;
     }
 }
 

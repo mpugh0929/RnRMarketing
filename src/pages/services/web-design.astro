@@ -13,6 +13,9 @@ import webDesignSvg from "@assets/images/svg/web-design.svg";
 // Import SVG icons from @assets/images/svg directory
 import responsiveDesignIcon from "@assets/images/svg/responsive-design.svg";
 import { Icon } from 'astro-icon/components';
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 
 // Optimize the landing image
@@ -51,12 +54,12 @@ const optimizedImage = await getOptimizedImage(landingImage);
         <ul class="cs-card-group">
           <li class="cs-item">
             <h3 class="cs-h3">
-              <Icon
-                name="sos"
-                width="32"
-                height="32"
-                class="cs-h3-icon"
-            />
+                <Icon
+                    name="phonecall2"
+                    width="32"
+                    height="32"
+                    class="cs-h3-icon"
+                />
               Emergency Response
             </h3>
             <p class="cs-item-text">
@@ -111,7 +114,7 @@ const optimizedImage = await getOptimizedImage(landingImage);
               <li class="cs-item">
                 <h3 class="cs-h3">
                   <Icon
-                    name="sos"
+                    name="phonecall2"
                     width="32"
                     height="32"
                     class="cs-h3-icon"
@@ -198,8 +201,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
     </div>
     <div class="cs-bubbles" aria-hidden="true"></div>
   </section>
-
-  <Articles />
+    <FAQ />  
+    <CTA />
+    <Articles />
+    <Newsletter />
 </BaseLayout>
 
 <style lang="less">
@@ -635,6 +640,9 @@ const optimizedImage = await getOptimizedImage(landingImage);
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 300px;
     }
 }
 

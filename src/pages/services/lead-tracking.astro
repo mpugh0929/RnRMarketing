@@ -12,6 +12,9 @@ import leadSvg from "@assets/images/svg/lead-tracking.svg";
 
 // Import SVG icons from @assets/images/svg directory
 import { Icon } from "astro-icon/components";
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -183,7 +186,10 @@ preloadedImage={optimizedImage} >
         </div>
         <div class="cs-bubbles" aria-hidden="true"></div>
     </section>
+    <FAQ />  
+    <CTA />
     <Articles />
+    <Newsletter />
   </BaseLayout>
 <style lang="less">
  /*-- -------------------------- -->
@@ -766,6 +772,9 @@ preloadedImage={optimizedImage} >
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 300px;
     }
 }
 

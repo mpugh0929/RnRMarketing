@@ -13,6 +13,9 @@ import seoPic from "@assets/images/svg/seo-pic.svg";
 // Import SVG icons from @assets/images/svg directory
 import seoIcon from "@assets/images/svg/seo.svg";
 import piggyBankIcon from "@assets/images/svg/piggy-bank.svg";
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -216,8 +219,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
     </div>
     <div class="cs-bubbles" aria-hidden="true"></div>
 </section>
-
-<Articles />
+    <FAQ />  
+    <CTA />
+    <Articles />
+    <Newsletter />
 
 </BaseLayout>
 
@@ -654,6 +659,9 @@ const optimizedImage = await getOptimizedImage(landingImage);
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 300px;
     }
 }
 

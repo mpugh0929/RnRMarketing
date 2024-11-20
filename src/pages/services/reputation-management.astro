@@ -11,6 +11,9 @@ import landingImage from "@assets/images/landing/ocean-water.jpg";
 import repSvg from "@assets/images/svg/reputation-management.svg";
 
 import { Icon } from 'astro-icon/components';
+import CTA from "@components/CTA.astro";
+import FAQ from "@components/FAQ.astro";
+import Newsletter from "@components/Newsletter.astro";
 
 // Optimize the landing image
 const optimizedImage = await getOptimizedImage(landingImage);
@@ -189,8 +192,10 @@ const optimizedImage = await getOptimizedImage(landingImage);
       </div>
       <div class="cs-bubbles" aria-hidden="true"></div>
   </section>
-
-  <Articles />
+    <FAQ />  
+    <CTA />
+    <Articles />
+    <Newsletter />
 </BaseLayout>
 
 <style lang="less">
@@ -626,6 +631,9 @@ const optimizedImage = await getOptimizedImage(landingImage);
         right: auto;
         left: 50%;
         bottom: -13.75rem;
+    }
+    .cs-item {
+        height: 350px;
     }
 }
 
