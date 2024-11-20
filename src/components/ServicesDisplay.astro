@@ -20,54 +20,48 @@ const getServiceUrl = (serviceName: string) => {
 ---
 
 <!-- ============================================ -->
-<!--                   Services                   -->
-<!-- ============================================ -->  
+<!--                    Services                  -->
+<!-- ============================================ -->
 
-<section id="services-1629">
+<section id="services-1304">
     <div class="cs-container">
         <div class="cs-content">
-            <div class="cs-flex">
+            <div class="cs-flex-group">
                 <span class="cs-topper">RESTORATION MARKETING EXPERTS</span>
                 <h2 class="cs-title">Proven Marketing Solutions for Restoration Companies</h2>
             </div>
             <p class="cs-text">
                 We specialize in generating high-quality leads for water damage, fire restoration, and mold remediation companies. Our comprehensive marketing approach combines aggressive PPC campaigns for immediate emergency calls with strategic SEO for long-term market dominance. Unlike general marketing agencies, we understand the unique challenges of restoration marketing - from emergency response messaging to insurance work requirements. Partner with an agency that knows how to target property owners, not renters, and can deliver qualified leads ready to authorize work.
             </p>
-        </div>      
-        <ul class="cs-card-group">            
-            {services.map(service => {
-                const serviceUrl = getServiceUrl(service.data.Name);
-                return (
-                    <li class="cs-item" key={service.data.Name}>
-                        <a href={serviceUrl} class="cs-link" aria-label={service.data.FormalName}>
-                            <picture class="cs-picture">
-                                <Icon 
-                                    width="48px" 
-                                    height="48px" 
-                                    class="cs-icon" 
-                                    aria-hidden="true" 
-                                    name={service.data.IconName}
-                                />
-                            </picture>
-                        </a>                    
-                        
-                        <div class="cs-text-group">
-                            <h3 class="cs-h3">
-                                <a href={serviceUrl} class="cs-link" aria-label={service.data.FormalName}>    
-                                    {service.data.FormalName}                    
-                                </a>
-                            </h3>
+        </div>
+        <ul class="cs-card-group">
+            {
+                services.map((service) => {
+                    const serviceUrl = getServiceUrl(service.data.Name);
+                    return (
+                    <li class="cs-item">
+                        <a href={serviceUrl} class="cs-link">
+                            <Icon
+                                class="cs-icon"
+                                name={service.data.IconName}
+                                width="40"
+                                height="40"
+                                aria-hidden="true"
+                            />
+                            <h3 class="cs-h3">{service.data.FormalName}</h3>
                             <p class="cs-item-text">
-                                {service.data.ShortDescription}   
+                                {service.data.ShortDescription}
                             </p>
-                        </div>
+                        </a>
                     </li>
-                );
-            })}
+                    );
+                })
+            }
         </ul>
         <a href="/services" class="cs-button-solid">View All Services</a>
     </div>
-</section>
+</section>                                
+
 <style lang="less">
 /*-- -------------------------- -->
 <---          Services          -->
@@ -75,219 +69,155 @@ const getServiceUrl = (serviceName: string) => {
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #services-1629 {
+    #services-1304 {
         padding: var(--sectionPadding);
+        position: relative;
+        z-index: 10;
+    }
+    #services-1304 .cs-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* 48px - 64px */
+        gap: clamp(3rem, 6vw, 4rem);
+    }
+    #services-1304 .cs-content {
+        /* set text align to left if content needs to be left aligned */
+        text-align: left;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: flex-start;
+    }
 
-        .cs-container {
-            /* changes to 1280px at desktop */
-            max-width: (800/16rem);max-width: (1280/16rem);
-            width: 100%;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 48px - 64px */
-            gap: clamp(3rem, 6vw, 4rem);
-        }
-
-        .cs-content {
-            /* set text align to left if content needs to be left aligned */
-            text-align: left;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
-            align-items: flex-start;
-        }
-    
-        .cs-title {
-            max-width: 20ch;
-        }
-
-        .cs-text {
-            max-width: (640/16rem);
-            position: relative;
-            z-index: 1;
-
-            &:after {
-                /* divider line */
-                content: "";
-                width: 100%;
-                height: 1px;
-                margin-top: (24/16rem);
-                background: var(--primary);
-                opacity: 1;
-                display: block;
-                position: relative;
-            }
-        }
-
-        .cs-card-group {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(20rem, 1fr) );
-            row-gap: (40/16rem);
-            /* 16px - 40px */
-            column-gap: clamp(1rem, 5vw, 2.5rem);
-        }
-
-        .cs-item {
-            text-align: left;
-            list-style: none;
-            max-width: (400/16rem);
-            width: 100%;
-            margin: 0;
-            box-sizing: border-box;
-            display: flex;
-            align-items: flex-start;
-            /* 16px - 24px */
-            gap: clamp(1rem, 3vw, 1.5rem);
-            text-align: left;
-        }
-
-        .cs-picture {
-            /* 60px - 80px */
-            width: clamp(3.75rem, 6vw, 5rem);
-            height: clamp(3.75rem, 6vw, 5rem);
-            margin: 0;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            /* prevents flexbox from squishing it */
-            flex: none;
-        }
-
-        .cs-icon {
-            width: 90px;
-            height: auto;
-            display: block;
-        }
-
-        .cs-h3 {
-            font-size: (20/16rem);
-            text-align: inherit;
-            line-height: 1.5em;
-            margin: 0;
-            margin-bottom: (8/16rem);
-            color: var(--headerColor);
-        }
-
-        .cs-item-text {
-            /* 14px - 16px */
-            font-size: clamp(0.875rem, 1.5vw, 1rem);
-            text-align: inherit;
-            line-height: 1.5em;
-            margin: 0;
-            color: var(--bodyTextColor);
-        }
-
-        .cs-button-solid {
-            font-size: (16/16rem);
-            /* 46px - 56px */
-            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-            font-weight: 700;
-            min-width: (150/16rem);
-            margin: 0;
-            /* prevents padding from adding to the width */
-            box-sizing: border-box;
-            padding: 0 (24/16rem);
-            color: #fff;
-            background-color: var(--primary);
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-
-            &:before {
-                content: "";
-                width: 0%;
-                height: 100%;
-                background: #000;
-                opacity: 1;
-                border-radius: (4/16rem);
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                transition: width 0.3s;
-            }
-
-            &:hover {
-                &:before {
-                    width: 100%;
-                }
-            }
-        }
+    #services-1304 .cs-title {
+        max-width: 20ch;
+    }
+    #services-1304 .cs-card-group {
+        width: 100%;
+        max-width: 80rem;
+        margin: 0;
+        padding: 0 1rem;
+        /* prevents padding and border from affecting height and width */
+        background-color: #fff;
+        box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        position: relative;
+        z-index: 15;
+    }
+    #services-1304 .cs-item {
+        text-align: left;
+        list-style: none;
+        width: 100%;
+        border-bottom: 1px solid #e8e8e8;
+        box-sizing: border-box;
+        grid-column: span 12;
+        transition:
+            background-color 0.3s,
+            border-color 0.3s;
+    }
+    #services-1304 .cs-item:last-of-type {
+        border-bottom: none;
+    }
+    #services-1304 .cs-link {
+        text-decoration: none;
+        /* 24px - 60px top & Bottom */
+        /* 24px - 16px top & Bottom */
+        padding: clamp(1.5rem, 5.3vw, 3.75rem) clamp(1rem, 2.7vw, 2.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    #services-1304 .cs-icon {
+        /* 32px - 40px */
+        height: clamp(2rem, 4vw, 2.5rem);
+        width: auto;
+        margin: 0 0 1rem 0;
+    }
+    #services-1304 .cs-h3 {
+        /* 20px - 25px */
+        font-size: clamp(1.25rem, 2vw, 1.5625rem);
+        font-weight: 700;
+        text-align: inherit;
+        line-height: 1.2em;
+        margin: 0 0 0.75rem 0;
+        color: var(--headerColor);
+        transition: color 0.3s;
+    }
+    #services-1304 .cs-item-text {
+        /* 14px - 16px */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        text-align: inherit;
+        line-height: 1.5em;
+        margin: 0;
+        color: var(--bodyTextColor);
+        transition:
+            color 0.3s,
+            opacity 0.3s;
     }
 }
-
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #services-1629 {
-        .cs-container {
-            max-width: (1280/16rem);
-        }
-
-        .cs-item {
-            margin: 0;
-            width: 100%;
-            align-items: flex-start;
-        }
-
-        .cs-h3,
-        .cs-item-text {
-            text-align: left;
-        }
-
-        .cs-content {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cs-flex {
-            text-align: left;
-            width: 40vw;
-            max-width: (640/16rem);
-            flex: none;
-        }
-
-        .cs-title {
-            margin: 0;
-        }
-
-        .cs-text {
-            padding: (12/16rem) 0 (12/16rem) (24/16rem);
-
-            &:after {
-                width: 1px;
-                height: 100%;
-                margin: 0 (24/16rem) 0 0;
-                order: -1;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
+    #services-1304 .cs-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+    }
+    #services-1304 .cs-title {
+        margin: 0;
+    }
+    #services-1304 .cs-flex-group {
+        width: 50%;
+        /* prevents flexbox from squishing it */
+        flex: none;
+    }
+    #services-1304 .cs-item {
+        grid-column: span 6;
+    }
+    #services-1304 .cs-item:nth-of-type(4),
+    #services-1304 .cs-item:nth-of-type(8) {
+        border-right: none;
+    }
+    #services-1304 .cs-item:nth-of-type(7),
+    #services-1304 .cs-item:nth-of-type(8) {
+        border-bottom: none;
+    }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #services-1304 .cs-card-group {
+        padding: 0;
+    }
+    #services-1304 .cs-item {
+        grid-column: span 3;
+        border-right: 1px solid #e8e8e8;
+    }
+    #services-1304 .cs-item:hover {
+        background-color: #1a1a1a;
+        border-color: #1a1a1a;
+    }
+    #services-1304 .cs-item:hover .cs-h3,
+    #services-1304 .cs-item:hover .cs-item-text {
+        color: var(--bodyTextColorWhite);
+    }
+    #services-1304 .cs-item:hover .cs-item-text {
+        opacity: 0.8;
+    }
+    #services-1304 .cs-item:nth-of-type(5),
+    #services-1304 .cs-item:nth-of-type(6),
+    #services-1304 .cs-item:nth-of-type(7),
+    #services-1304 .cs-item:nth-of-type(8) {
+        border-bottom: none;
     }
 }
 
-/* Large Desktop - 1300px */
-@media only screen and (min-width: 81.25rem) {
-    #services-1629 {
-        .cs-card-group {
-            max-width: (1280/16rem);
-        }
-
-        .cs-item {
-            flex-direction: row;
-        }
-    }
-}
-                                
 </style>
