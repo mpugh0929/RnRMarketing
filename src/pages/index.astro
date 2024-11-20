@@ -12,7 +12,7 @@ import { Icon } from 'astro-icon/components';
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "@libs/utils"
 import landingImage from "@assets/images/hero-img.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import landingImageMobile from "@assets/images/hero-img-m-2.jpeg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImageMobile from "@assets/images/landing/blue-abstract.jpeg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import restorationGraphic from "@assets/images/results.jpg"
 import number1 from "@assets/images/number 1.jpeg"
 import Newsletter from "@components/Newsletter.astro";
@@ -367,7 +367,7 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
             color: #fff;
             padding: 0 (48/16rem);
             border-radius: (30/16rem);
-            background-color: var(--primary);
+            background-color: var(--secondary);
             display: inline-block;
             position: relative;
             z-index: 1;
@@ -557,6 +557,10 @@ const optimizedImageMobile = await getOptimizedImage(landingImageMobile)
         .cs-bubbles1 {
             /* changes to auto at large desktop */
             right: (-428/16rem);
+        }
+
+        .cs-button-solid {
+          background-color: var(--primary);
         }
     }
 }
